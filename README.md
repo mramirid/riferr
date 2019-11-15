@@ -5,7 +5,7 @@
 Proyek akhir mata kuliah Pemrograman Web
 
 ### Pembagian Project Saat Ini :
-- [ ] Fajar - Homepage <br>
+- [ ] Fajar - Homepage 10% <br>
 - [ ] Hakim - Profile User 0% <br>
 - [ ] Kholil - Login&Register Page 30% <br>
 - [ ] Rahayu - Database 100% <br>
