@@ -1,6 +1,6 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![GitHub commits](https://img.shields.io/github/commits-since/mramirid/Riferr/v1.0.0.svg)](https://GitHub.com/mramirid/Riferr/commit/)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/mramirid/Riferr.svg)](https://img.shields.io/github/commit-activity/m/mramirid/Riferr)
 [![GitHub contributors](https://img.shields.io/github/contributors/mramirid/Riferr.svg)](https://GitHub.com/mramirid/Riferr/graphs/contributors/)
 
 # Riferr - Ongoing project
