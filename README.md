@@ -10,7 +10,7 @@ Kholilul Rachman N.M
 Proyek akhir mata kuliah Pemrograman Web
 
 ### Workflow Tree Project 
-
+```
 D:.
 |   error.ejs
 |   index.ejs
@@ -26,12 +26,4 @@ D:.
 \---register
         buyer.ejs | 5%
         seller.ejs | 0%
-```
-markdown-magic-directory-tree/
-├── .npmrc
-├── example.js
-├── index.js
-├── package.json
-├── README.md
-└── yarn.lock
 ```
