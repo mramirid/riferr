@@ -111,3 +111,51 @@ a {
 .Hero-Header{
 	box-shadow: 5px 5px 5px grey;
 }
+
+.second-section{
+	margin: 50px;
+}
+
+.popular{
+	margin-bottom: 50px;
+}
+
+.popular .card img{
+	height: 350px;
+}
+
+.self-branding{
+	margin-bottom: 40px;
+}
+
+.self-branding .text-section{
+	width: 50%;
+	padding: 10px 0px;
+}
+
+.self-branding img{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.self-branding ul{
+	list-style: none;
+	padding-left: 2.0em;
+}
+
+.self-branding li{
+	margin-top: 30px;
+}
+
+.self-branding ul > li:before{
+	content: url('https://fiverr-res.cloudinary.com/npm-assets/@fiverr/logged_out_homepage_perseus/apps/checkmark.0c8e7a1.svg');
+	position: absolute;
+	margin-left: -2.0em;
+	margin-top: 0.3em;
+}
+
+.getting-started{
+	background: url('https://fiverr-res.cloudinary.com/q_auto,f_auto,w_1400,dpr_1.0/general_assets/logged_out_homepage/assets/signup/1440-cta2x.jpg');
+	text-align: center;
+	padding: 50px;	
+}
