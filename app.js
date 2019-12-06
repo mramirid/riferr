@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Add Router here
 app.use('/', indexRouter);
 app.use('/admin', loginRouter);
+app.use('/products', require('./routes/products'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

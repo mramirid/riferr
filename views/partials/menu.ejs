@@ -1,4 +1,5 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-light navdef">
+
   <!-- Brand Logo pada navbar -->
   <div class="navbar-header">
     <a href="/" class="navbar-brand mr-auto">Riferr</a>
@@ -9,7 +10,8 @@
       <span class="navbar-toggler-icon"></span>
   </button>
 
-  <!-- Navbar Item -->
+<% if(menuId=='home')  {%>
+  <!-- Navbar Item for home -->
   <div class="collapse navbar-collapse" id="navbar">
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item" id="home">
@@ -23,4 +25,29 @@
       </li>
     </ul>
   </div>
+  <% } else{%>
+   <div class="collapse navbar-collapse" id="navbar">
+    <ul class="nav navbar-nav ml-auto">
+      
+      <li class="mr-3">
+        <!-- <a class="nav-link" href="/">Become Seller</a> -->
+        <select class="custom-select custom-select-lg">
+          <option>select 1</option>
+          <option>select 2</option>
+          <option>select 3</option>
+        </select>
+
+      </li>
+
+      <li>
+        <select class="custom-select custom-select-lg">
+          <option>select 1</option>
+          <option>select 2</option>
+          <option>select 3</option>
+        </select>        
+      </li>
+    
+    </ul>
+  </div>
+  <% } %>
 </nav>
