@@ -7,6 +7,7 @@ var logger = require('morgan');
 // Add Router here
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/admin');
+var profileRouter = require('./routes/profile');
 var registrasiRouter = require('./routes/registrasi_buyer');
 
 var app = express();
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Add Router here
 app.use('/', indexRouter);
 app.use('/admin', loginRouter);
+app.use('/dashboard',profileRouter);
 app.use('/products', require('./routes/products'));
 app.use('/registrasi_buyer', registrasiRouter);
 

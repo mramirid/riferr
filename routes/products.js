@@ -5,7 +5,7 @@ const connection = require('../dbConfig');
 
 router.get('/:categories', function(req, res, next){
 	
-	connection.query('SELECT * FROM account', function(err, rows, fields){
+	connection.query('SELECT * FROM accounts', function(err, rows, fields){
 
 		if(!err){
 			res.render('products/list-products', {

@@ -13,7 +13,7 @@ router.post('/auth', function(request, response) {
 		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
 			if (results.length > 0) {
 				// response.send('nyoba');
-				response.redirect('/admin/Dashboard');
+				response.redirect('/dashboard');
 			} else {
 				response.send('Incorrect Username and/or Password!');
 			}			
@@ -23,16 +23,6 @@ router.post('/auth', function(request, response) {
 		response.send('Please enter Username and Password!');
 		response.end();
 	}
-});
-
-router.get('/auth', function(request, response) {
-	response.send("UAAAA");
-	response.end();
-});
-
-router.get('/Dashboard',function(request,response){
-	response.send('TEST Dashboard');
-	response.end();
 });
 
 module.exports = router;
