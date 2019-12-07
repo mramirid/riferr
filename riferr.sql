@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2019 at 11:22 AM
+-- Generation Time: Dec 07, 2019 at 02:59 PM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -34,16 +34,17 @@ CREATE TABLE `buyer` (
   `BUYERPASSWORD` varchar(16) NOT NULL,
   `BUYERNAME` varchar(20) DEFAULT NULL,
   `BUYERPHONE` varchar(20) DEFAULT NULL,
-  `BUYERADDRESS` varchar(100) DEFAULT NULL
+  `BUYERADDRESS` varchar(100) DEFAULT NULL,
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `buyer`
 --
 
-INSERT INTO `buyer` (`BUYERID`, `BUYERNICKNAME`, `BUYERPASSWORD`, `BUYERNAME`, `BUYERPHONE`, `BUYERADDRESS`) VALUES
-('1', 'buyer1', 'buyer1', 'kholil nur manab', '088881', 'jalan jalan, jalan aja no.1'),
-('2', 'buyer2', 'buyer2', 'manab nur kholil', '08811888', 'jalan jalan, jalan aja no.2');
+INSERT INTO `buyer` (`BUYERID`, `BUYERNICKNAME`, `BUYERPASSWORD`, `BUYERNAME`, `BUYERPHONE`, `BUYERADDRESS`, `email`) VALUES
+('1', 'buyer1', 'buyer1', 'kholil nur manab', '088881', 'jalan jalan, jalan aja no.1', 'kholil.manab@gmail.com'),
+('2', 'buyer2', 'buyer2', 'manab nur kholil', '08811888', 'jalan jalan, jalan aja no.2', 'kholil.zboy@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -79,16 +80,17 @@ CREATE TABLE `seller` (
   `SELLERPASSWORD` varchar(16) NOT NULL,
   `SELLERNAME` varchar(20) DEFAULT NULL,
   `SELLERPHONE` varchar(20) DEFAULT NULL,
-  `SELLERADDRESS` varchar(100) DEFAULT NULL
+  `SELLERADDRESS` varchar(100) DEFAULT NULL,
+  `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `seller`
 --
 
-INSERT INTO `seller` (`SELLERID`, `SELLERNICKNAME`, `SELLERPASSWORD`, `SELLERNAME`, `SELLERPHONE`, `SELLERADDRESS`) VALUES
-('1', 'seller1', 'seller1', 'manab kholil nur', '09123010', 'jalan in aja-01'),
-('2', 'seller2', 'seller2', 'nur kholil manab', '091212093', 'jalan in aja-02');
+INSERT INTO `seller` (`SELLERID`, `SELLERNICKNAME`, `SELLERPASSWORD`, `SELLERNAME`, `SELLERPHONE`, `SELLERADDRESS`, `email`) VALUES
+('1', 'seller1', 'seller1', 'manab kholil nur', '09123010', 'jalan in aja-01', 'kholilzboy@gmail.com'),
+('2', 'seller2', 'seller2', 'nur kholil manab', '091212093', 'jalan in aja-02', 'kholil.wibu.akut@gmail.com');
 
 -- --------------------------------------------------------
 
