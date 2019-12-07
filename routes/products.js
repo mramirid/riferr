@@ -4,14 +4,14 @@ const connection = require('../dbConfig');
 
 
 router.get('/:categories', function(req, res, next){
-	
-	connection.query('SELECT * FROM accounts', function(err, rows, fields){
+	var query = "SELECT services.*, seller.sellernickname FROM services,seller where catid = ?" +
+		  " and services.sellerid = services.sellerid";
+	connection.query(query,[req.params.categories], function(err, rows, fields){
 
 		if(!err){
 			res.render('products/list-products', {
 				page:'list-products',
 				menuId:'list-products',
-				categories:req.params.categories,
 				data:rows
 			});
 		}else{
@@ -27,6 +27,10 @@ router.get('/:categories', function(req, res, next){
 		return;
 	});
 
+});
+
+router.get('/details/:servicesid',function(req,res,next){
+	res.render('products/detail-products',{page:'details',menuId:'home'});
 });
 
 module.exports = router;

@@ -1,7 +1,7 @@
-<% for (var i = 0; i < categories; i++) { %>
+<% for (var i = 0; i < data.length; i++) { %>
 
 <div class="col-sm-3 card">
-	<div id="carousel-list-<%=i%>" class="carousel slide" data-ride="carousel">
+	<div id="carousel-list-<%=i%>" class="carousel slide" data-ride="carousel" data-interval="false">
 		
 		<ol class="carousel-indicators">
 		    <li data-target="#carousel-list-<%=i%>" data-slide-to="0" class="active"></li>
@@ -35,11 +35,11 @@
 	</div>
 	<div class="card-body">
 		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRvkzEJUeQs1_Pk0D8dncJ7EHpJfPKh6hAy8iEFbpME8imSiQBn">
-		<a href=""> <small>ini nama</small> </a>
-		<p>ini desc produk oaisnoiandoiandoiasndoiasndoi asoisidnoasindaosi</p>
+		<a href=""> <small><%= data[i].sellernickname %></small> </a>
+		<STRONG><p><a href="products/details/<%= data[i].SERVICEID%>"><%= data[i].SERVICETITLE %></a></p></STRONG>
 	</div>
-	<div class="card-footer">
-		<small class="text-muted">ini footer</small>
+	<div class="card-footer text-right">
+		<p class="text-muted m-0"> <strong> &#20803; <%= data[i].SERVICEPRICE %> </strong></p>
 	</div>
 </div>
 
