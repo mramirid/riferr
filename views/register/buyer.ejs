@@ -20,21 +20,31 @@
   <div class="logo" style="background-image: url('./images/Admin.png');"></div>
   
 <!-- Login -->
-  <div class="login"> 
+  <div class="login" style="height: 420px;"> 
     <h1>Buyer Registration Form</h1>
 
     <form class="form" method="post" action="/belajar_laravel/adm_Dashboard"><br>
       <p class="field">
-        <input type="text" name="u_adm" placeholder="Username or email" required/>
+        <input type="text" name="u_buyer" placeholder="Username or email" required/>
         <i class="fa fa-user"></i>
+      </p>
+      
+      <p class="field">
+        <input type="text" name="no_hp_buyer" placeholder="No Hp" required/>
+        <i class="fa fa-mobile-phone" style="size: 152px;"></i>
       </p>
 
       <p class="field">
-        <input type="password" name="p_adm" placeholder="Password" required/>
-        <i class="fa fa-lock"></i>
+        <input type="text" name="alamat_buyer" placeholder="Alamat" required/>
+        <i class="fa fa-location-arrow"></i>
       </p>
 
-      <p class="submit"><input type="submit" name="commit" value="Login"></p>
+      <p class="field">
+        <input type="password" name="p_buyer" placeholder="Password" required/>
+        <i class="fa fa-lock"></i>
+      </p>
+      
+      <p class="submit"><input type="submit" name="commit" value="Register"></p>
 
       <p class="forgot">
         <a href="#">Forgot Password?</a>
@@ -42,7 +52,7 @@
 
     </form>
   </div>
-
+  
   <div class="copyright">
             <p>
             Copyright &copy;       
