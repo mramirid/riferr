@@ -15,13 +15,13 @@ router.post('/auth', function(request, response) {
 				// response.send('nyoba');
 				response.redirect('/dashboard');
 			} else {
-				// response.send('Incorrect Username and/or Password!');
+				
 				connection.query('SELECT * FROM buyer WHERE buyernickname = ? AND buyerpassword = ?', [username, password], function(error, results, fields){
 					if(results.length > 0){
 						response.send('login as buyer');
 						response.end();
 					}else{
-						response.send('aoisndn')
+						response.send('Incorrect Username and/or Password!');
 						response.end();
 					}
 				});
