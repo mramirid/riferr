@@ -1,5 +1,5 @@
 // get library or file ?
-var databaseMySQL = require('./databaseConfig');
+var databaseMySQL = require('./dbConfig');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
