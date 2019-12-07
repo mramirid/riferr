@@ -1,0 +1,36 @@
+var express = require('express');
+var router = express.Router();
+const connection = require('../dbConfig');
+
+
+router.get('/:categories', function(req, res, next){
+	var query = "SELECT services.*, seller.sellernickname FROM services,seller where catid = ?" +
+		  " and services.sellerid = services.sellerid";
+	connection.query(query,[req.params.categories], function(err, rows, fields){
+
+		if(!err){
+			res.render('products/list-products', {
+				page:'list-products',
+				menuId:'list-products',
+				data:rows
+			});
+		}else{
+			res.send('query error');
+			res.end();
+		}
+
+	});
+
+	connection.on('error', function(err){
+		res.send("connection error");
+		res.end();
+		return;
+	});
+
+});
+
+router.get('/details/:servicesid',function(req,res,next){
+	res.render('products/detail-products',{page:'details',menuId:'home'});
+});
+
+module.exports = router;
