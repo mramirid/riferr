@@ -4,8 +4,7 @@ const connection = require('../dbConfig');
 
 
 router.get('/:categories', function(req, res, next){
-	var query = "SELECT services.*, seller.sellernickname FROM services,seller where catid = ?" +
-		  " and services.sellerid = services.sellerid";
+	var query = "SELECT services.*, seller.sellernickname from services join seller on services.SELLERID = seller.SELLERID and CATID = ?";
 	connection.query(query,[req.params.categories], function(err, rows, fields){
 
 		if(!err){
