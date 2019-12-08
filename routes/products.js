@@ -2,6 +2,13 @@ var express = require('express');
 var router = express.Router();
 const connection = require('../dbConfig');
 
+router.get('/nice', function (req,res,next) {
+	res.render('products/detail-order');
+});
+
+router.get('/check/:data', function (req,res,next) {
+	res.render('products/checkout',{data:req.params.data});
+});
 
 router.get('/:categories', function(req, res, next){
 	var query = "SELECT services.*, seller.sellernickname from services join seller on services.SELLERID = seller.SELLERID and CATID = ?";
