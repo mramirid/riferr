@@ -6,9 +6,11 @@
 <body>
 	<% include ../partials/menu %>
 	<div class="container-fluid" style="margin-top: 60px;">
-		<div class="detail-page row">
+		<div class="detail-page row border-top border-bottom p-2">
 			<div class="col-md-12">
-				<h2>ini judul</h2>
+				<h3 class="p-0 m-0">ini judul</h3>
+				<img src="../../images/kholel 2.png">
+				<small>ini nama user</small>
 			</div>
 		</div>
 		<div class="row">
@@ -33,7 +35,6 @@
 					  </a>
 					</div>
 				</div>
-				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 			</div>
 			<div class="col-md-4">
 				<div class="card border-success mb-3 detail-desc">
@@ -43,14 +44,21 @@
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 					</div>
 					<div class="card-footer">
-						<a class="btn btn-success float-right" href="" role="button">aa</a></h9>
+						<a id="buy" class="btn btn-success float-right" href="" role="button">aa</a></h9>
 						<p class="btn float-left m-0" href="" role="button"> Rp 12000 </p>
 					</div>
 				</div>
+			</div>
 		</div>
 
 	</div><!-- 
 	<% include ../partials/footer %> -->
 </body>
+<script type="text/javascript">
+	$('#buy').click(function(){
+		$('.card-body').append(<% include ../partials/footer %>);
+		return false;
+	});
+</script>
 <% include ../partials/script %>
 </html>
