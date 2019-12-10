@@ -23,13 +23,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Penggunaan session untuk men-track status auth user
+// Penggunaan session untuk men-track status login user
 app.use(session({secret: "FP PemWeb", resave: true, saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Router
-// const loginRouter = require('./routes/auth');
+// const loginRouter = require('./routes/login');
 // const profileRouter = require('./routes/profile');
 // const registrasiRouter = require('./routes/registrasi_buyer');
 
@@ -43,9 +43,10 @@ app.set('view engine', 'ejs');
 
 // Add Router here
 require('./routes/homepage')(app);
-require('./routes/auth')(app);
+require('./routes/login')(app);
 require('./routes/register_buyer')(app);
-// app.use('/auth', loginRouter)(app.Router());
+require('./routes/register_seller')(app);
+// app.use('/login', loginRouter)(app.Router());
 // app.use('/dashboard',profileRouter);
 // app.use('/products', require('./routes/products'));
 // app.use('/registrasi_buyer', registrasiRouter);

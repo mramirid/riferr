@@ -6,7 +6,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const db = require('../models');
 
 // Memberitahu passport kita ingin menggunakan LocalStrategy
-// Kita ingin auth menggunakan email & password
+// Kita ingin login menggunakan email & password
 passport.use(new LocalStrategy({
     // Login menggunakan email
     usernameField: 'user_email'

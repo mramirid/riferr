@@ -1,13 +1,13 @@
 const path = require('path');
 
-// Untuk mengecek apakah user sudah auth
+// Untuk mengecek apakah user sudah login
 const isAuthenticated = require('../config/middleware/isAuthenticated');
 
 module.exports = function (app) {
-    app.get('/auth', function (req, res) {
+    app.get('/login', function (req, res) {
         // Jika user sudah login, redirect ke homepage
         if (req.user) res.redirect('/');
         // Jika user belum login
-        res.render('auth/login');
+        res.render('login/login_page');
     });
 };
