@@ -23,24 +23,24 @@
         <div class="login" style="height: 420px;">
             <h1>Seller Registration Form</h1>
 
-            <form class="form" method="post"><br>
+            <form class="form signup"><br>
                 <p class="field">
-                    <input type="text" name="u_buyer" placeholder="Email" required/>
+                    <input type="text" name="u_buyer" placeholder="Email" id="email-input" required/>
                     <i class="fa fa-user"></i>
                 </p>
 
                 <p class="field">
-                    <input type="text" name="no_hp_buyer" placeholder="No Hp" required/>
+                    <input type="text" name="no_hp_buyer" placeholder="No Hp" id="phone-input" required/>
                     <i class="fa fa-mobile-phone" style="size: 152px;"></i>
                 </p>
 
                 <p class="field">
-                    <input type="text" name="alamat_buyer" placeholder="Alamat" required/>
+                    <input type="text" name="alamat_buyer" placeholder="Alamat" id="address-input" required/>
                     <i class="fa fa-location-arrow"></i>
                 </p>
 
                 <p class="field">
-                    <input type="password" name="p_buyer" placeholder="Password" required/>
+                    <input type="password" name="p_buyer" placeholder="Password" id="password-input" required/>
                     <i class="fa fa-lock"></i>
                 </p>
 
@@ -68,9 +68,10 @@
 
 </div>
 <!-- scripts -->
+<script src="javascripts/jquery/jquery.min.js"></script>
 <script src="javascripts/auth/particles.js"></script>
 <script src="javascripts/auth/app.js"></script>
-
+<script src="javascripts/auth/seller.js"></script>
 
 </body>
 

@@ -47,6 +47,7 @@ require('./routes/login')(app);
 require('./routes/register_seller')(app);
 require('./routes/register_buyer')(app);
 require('./routes/api-routes')(app);
+require('./routes/profile')(app);
 // app.use('/login', loginRouter)(app.Router());
 // app.use('/dashboard',profileRouter);
 // app.use('/products', require('./routes/products'));

@@ -5,6 +5,11 @@ const bcrypt = require('bcryptjs');
 // Akan diexport ke server
 module.exports = function (sequelize, DataTypes) {
     const User = sequelize.define("User", {
+        user_id:{
+            type: DataTypes.STRING,
+            allowNull: true,
+            primaryKey: true,
+        },
         user_email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -12,10 +17,6 @@ module.exports = function (sequelize, DataTypes) {
             validate: { isEmail: true }
         },
         user_password: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        user_nickname: {
             type: DataTypes.STRING,
             allowNull: false
         },
