@@ -4,11 +4,10 @@ const path = require('path');
 const isAuthenticated = require('../config/middleware/isAuthenticated');
 
 module.exports = function (app) {
-    // Jika user sudah punya akun, redirect ke homepage
-    app.get('/', function (req, res) {
-        if (req.user) {
-            res.redirect('/homepage');
-        }
-        res.sendFile(path.join(__dirname, '../public/'))
+    app.get('/auth', function (req, res) {
+        // Jika user sudah login, redirect ke homepage
+        if (req.user) res.redirect('/');
+        // Jika user belum login
+        res.render('auth/login');
     });
 };

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="author" content="W | K - Project Sangar"/>
+    <title>Register Form</title>
+
+    <link href="/stylesheets/auth/login_style.css" rel="stylesheet" type="text/css">
+    <link href="/fonts/font-awesome.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="#"/>
+
+</head>
+<body>
+
+<div id="particles-js">
+
+    <div class="container">
+        <div class="logo" style="background-image: url('/images/Admin.png');"></div>
+
+        <!-- Login -->
+        <div class="login" style="height: 420px;">
+            <h1>Buyer Registration Form</h1>
+
+            <form class="form" method="post"><br>
+                <p class="field">
+                    <input type="text" name="u_buyer" placeholder="Email" required/>
+                    <i class="fa fa-user"></i>
+                </p>
+
+                <p class="field">
+                    <input type="text" name="no_hp_buyer" placeholder="No Hp" required/>
+                    <i class="fa fa-mobile-phone" style="size: 152px;"></i>
+                </p>
+
+                <p class="field">
+                    <input type="text" name="alamat_buyer" placeholder="Alamat" required/>
+                    <i class="fa fa-location-arrow"></i>
+                </p>
+
+                <p class="field">
+                    <input type="password" name="p_buyer" placeholder="Password" required/>
+                    <i class="fa fa-lock"></i>
+                </p>
+
+                <p class="submit"><input type="submit" name="commit" value="Register"></p>
+
+                <p class="forgot">
+                    <a href="#">Forgot Password?</a>
+                </p>
+
+            </form>
+        </div>
+
+        <div class="copyright">
+            <p>
+                Copyright &copy;
+                <script type="text/javascript">
+                    document.write(new Date().getFullYear());
+                </script>
+                ,
+                <a style="color: gold" href="" target="_blank"> Riferr </a>
+            </p>
+        </div>
+    </div>
+    <!--/ Login-->
+
+</div>
+<!-- scripts -->
+<script src="javascripts/auth/particles.js"></script>
+<script src="javascripts/auth/app.js"></script>
+
+
+</body>
+
+</html>
