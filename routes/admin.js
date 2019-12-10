@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('login/loginForm');
 });
 
-router.post('/auth', function(request, response) {
+router.post('/login', function(request, response) {
 	var username = request.body.u_adm;
 	var password = request.body.p_adm;
 	if (username && password) {

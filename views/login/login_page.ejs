@@ -1,50 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="utf-8">
     <meta name="author" content="W | K - Project Sangar"/>
-    <title>Register Form</title>
+    <title>Login Form</title>
 
-    <link href="/stylesheets/auth/login_style.css" rel="stylesheet" type="text/css">
+    <link href="/stylesheets/auth/login_style.css" rel="stylesheet">
     <link href="/fonts/font-awesome.min.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="#"/>
-
 </head>
 <body>
-
 <div id="particles-js">
 
     <div class="container">
         <div class="logo" style="background-image: url('/images/Admin.png');"></div>
 
         <!-- Login -->
-        <div class="login" style="height: 420px;">
-            <h1>Seller Registration Form</h1>
+        <div class="login">
+            <h1>Welcome</h1>
 
-            <form class="form signup"><br>
+            <form class="form login" method="post"><br>
                 <p class="field">
-                    <input type="text" name="u_buyer" placeholder="Email" id="email-input" required/>
+                    <input type="text" name="u_adm" placeholder="Email" id="email-input" required/>
                     <i class="fa fa-user"></i>
                 </p>
 
                 <p class="field">
-                    <input type="text" name="no_hp_buyer" placeholder="No Hp" id="phone-input" required/>
-                    <i class="fa fa-mobile-phone" style="size: 152px;"></i>
-                </p>
-
-                <p class="field">
-                    <input type="text" name="alamat_buyer" placeholder="Alamat" id="address-input" required/>
-                    <i class="fa fa-location-arrow"></i>
-                </p>
-
-                <p class="field">
-                    <input type="password" name="p_buyer" placeholder="Password" id="password-input" required/>
+                    <input type="password" name="p_adm" placeholder="Password" id="password-input" required/>
                     <i class="fa fa-lock"></i>
                 </p>
 
-                <p class="submit"><input type="submit" name="commit" value="Register"></p>
+                <p class="submit"><input type="submit" name="commit" value="Login"></p>
 
                 <p class="forgot">
                     <a href="#">Forgot Password?</a>
@@ -64,15 +51,12 @@
             </p>
         </div>
     </div>
-    <!--/ Login-->
-
 </div>
 <!-- scripts -->
 <script src="javascripts/jquery/jquery.min.js"></script>
 <script src="javascripts/auth/particles.js"></script>
 <script src="javascripts/auth/app.js"></script>
-<script src="javascripts/auth/seller.js"></script>
-
+<script src="javascripts/auth/login.js"></script>
 </body>
 
 </html>
