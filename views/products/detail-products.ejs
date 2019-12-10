@@ -8,9 +8,9 @@
 	<div class="container-fluid" style="margin-top: 60px;">
 		<div class="detail-page row border-top border-bottom p-2">
 			<div class="col-md-12">
-				<h3 class="p-0 m-0">ini judul</h3>
+				<h3 class="p-0 m-0"><%= data[0].SERVICETITLE %></h3>
 				<img src="../../images/kholel 2.png">
-				<small>ini nama user</small>
+				<small><%= data[0].sellernickname %></small>
 			</div>
 		</div>
 		<div class="row">
@@ -38,14 +38,14 @@
 			</div>
 			<div class="col-md-4">
 				<div class="card border-success mb-3 detail-desc">
-  					<div class="card-header">About The Gig</div>
+  					<div class="card-header"><h3>About The Gig</h3></div>
 					<div class="card-body text-primary">
-						<h5 class="card-title">Primary card title</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<p> <%= data[0].SERVICEDESC %> </p>
 					</div>
 					<div class="card-footer">
-						<a id="buy" class="btn btn-success float-right" href="" role="button">aa</a></h9>
-						<p class="btn float-left m-0" href="" role="button"> Rp 12000 </p>
+						<button id="buy" class="btn btn-success float-right">buy</button>
+						<button id="buyreq" class="btn btn-success float-right" form="form1" type="submit">buy req</button>
+						<p class="btn float-left m-0" href="" role="button"> Rp <%= data[0].SERVICEPRICE %> </p>
 					</div>
 				</div>
 			</div>
@@ -54,11 +54,16 @@
 	</div><!-- 
 	<% include ../partials/footer %> -->
 </body>
+<% include ../partials/script %>
 <script type="text/javascript">
-	$('#buy').click(function(){
-		$('.card-body').append(<% include ../partials/footer %>);
-		return false;
+	$(document).ready(function(){
+		$('#buyreq').hide();
+		$('#buy').click(function(){
+			$('.card-header').html("<h3>Tell seller what you want</h3>")
+			$('.card-body').load("request");
+			$('#buyreq').show();
+			$('#buy').hide();
+		});
 	});
 </script>
-<% include ../partials/script %>
 </html>
