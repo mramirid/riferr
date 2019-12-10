@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2019 at 02:59 PM
--- Server version: 10.1.40-MariaDB
--- PHP Version: 7.3.5
+-- Generation Time: 07 Des 2019 pada 18.21
+-- Versi Server: 10.1.16-MariaDB
+-- PHP Version: 5.5.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,114 +23,72 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `buyer`
+-- Struktur dari tabel `buyer`
 --
 
 CREATE TABLE `buyer` (
-  `BUYERID` varchar(20) NOT NULL,
-  `BUYERNICKNAME` varchar(20) NOT NULL,
-  `BUYERPASSWORD` varchar(16) NOT NULL,
-  `BUYERNAME` varchar(20) DEFAULT NULL,
-  `BUYERPHONE` varchar(20) DEFAULT NULL,
-  `BUYERADDRESS` varchar(100) DEFAULT NULL,
-  `email` varchar(50) NOT NULL
+  `buyerid` int(11) NOT NULL,
+  `buyernickname` varchar(20) NOT NULL,
+  `buyerpassword` varchar(20) NOT NULL,
+  `buyername` varchar(20) NOT NULL,
+  `buyerphone` varchar(20) NOT NULL,
+  `buyeraddress` varchar(50) NOT NULL,
+  `email` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `buyer`
---
-
-INSERT INTO `buyer` (`BUYERID`, `BUYERNICKNAME`, `BUYERPASSWORD`, `BUYERNAME`, `BUYERPHONE`, `BUYERADDRESS`, `email`) VALUES
-('1', 'buyer1', 'buyer1', 'kholil nur manab', '088881', 'jalan jalan, jalan aja no.1', 'kholil.manab@gmail.com'),
-('2', 'buyer2', 'buyer2', 'manab nur kholil', '08811888', 'jalan jalan, jalan aja no.2', 'kholil.zboy@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Struktur dari tabel `categories`
 --
 
 CREATE TABLE `categories` (
-  `CATID` varchar(5) NOT NULL,
-  `CATNAME` varchar(20) NOT NULL
+  `catid` int(11) NOT NULL,
+  `catname` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `categories`
---
-
-INSERT INTO `categories` (`CATID`, `CATNAME`) VALUES
-('1', 'cat1'),
-('2', 'cat2'),
-('3', 'cat3'),
-('4', 'cat4'),
-('5', 'cat5');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seller`
+-- Struktur dari tabel `seller`
 --
 
 CREATE TABLE `seller` (
-  `SELLERID` varchar(20) NOT NULL,
-  `SELLERNICKNAME` varchar(20) NOT NULL,
-  `SELLERPASSWORD` varchar(16) NOT NULL,
-  `SELLERNAME` varchar(20) DEFAULT NULL,
-  `SELLERPHONE` varchar(20) DEFAULT NULL,
-  `SELLERADDRESS` varchar(100) DEFAULT NULL,
-  `email` varchar(50) NOT NULL
+  `sellerid` int(11) NOT NULL,
+  `sellernickname` varchar(20) NOT NULL,
+  `sellerpassword` varchar(20) NOT NULL,
+  `sellername` varchar(20) NOT NULL,
+  `sellerphone` varchar(20) NOT NULL,
+  `selleraddress` varchar(50) NOT NULL,
+  `email` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `seller`
---
-
-INSERT INTO `seller` (`SELLERID`, `SELLERNICKNAME`, `SELLERPASSWORD`, `SELLERNAME`, `SELLERPHONE`, `SELLERADDRESS`, `email`) VALUES
-('1', 'seller1', 'seller1', 'manab kholil nur', '09123010', 'jalan in aja-01', 'kholilzboy@gmail.com'),
-('2', 'seller2', 'seller2', 'nur kholil manab', '091212093', 'jalan in aja-02', 'kholil.wibu.akut@gmail.com');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `services`
+-- Struktur dari tabel `services`
 --
 
 CREATE TABLE `services` (
-  `SERVICEID` varchar(20) NOT NULL,
-  `SELLERID` varchar(20) NOT NULL,
-  `CATID` varchar(5) DEFAULT NULL,
-  `SERVICETITLE` varchar(50) NOT NULL,
-  `SERVICEDESC` text NOT NULL,
-  `SERVICEPRICE` float NOT NULL
+  `serviceid` int(11) NOT NULL,
+  `sellerid` int(11) NOT NULL,
+  `catid` int(11) NOT NULL,
+  `servicetitle` varchar(50) NOT NULL,
+  `servicedesc` text NOT NULL,
+  `serviceprice` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `services`
---
-
-INSERT INTO `services` (`SERVICEID`, `SELLERID`, `CATID`, `SERVICETITLE`, `SERVICEDESC`, `SERVICEPRICE`) VALUES
-('1', '1', '1', '2 modern logo design', 'ini des anjay1', 12000),
-('2', '1', '2', '3 modern logo design', 'ini des anjay', 13000),
-('3', '1', '3', '4 modern logo design', 'ini des anjay', 14000),
-('4', '1', '4', '5 modern logo design', 'ini des anjay', 15000),
-('5', '1', '5', '6 modern logo desing', 'ini des anjay', 16000),
-('6', '2', '1', '7 modern logo design', 'ini des anjay', 17000),
-('7', '2', '3', '8 modern logo design', 'ini des anjay', 18000),
-('8', '2', '4', '9 modern logo design', 'ini des anjay', 19000),
-('9', '2', '5', '10 modern logo design', 'ini des anjay', 20000);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transactions`
+-- Struktur dari tabel `transactions`
 --
 
 CREATE TABLE `transactions` (
-  `TRANSID` varchar(50) NOT NULL,
-  `SERVICEID` varchar(20) DEFAULT NULL,
-  `BUYERID` varchar(20) NOT NULL,
-  `TRANSDATE` date NOT NULL
+  `transid` int(11) NOT NULL,
+  `serviceid` int(11) NOT NULL,
+  `buyerid` int(11) NOT NULL,
+  `transdate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -143,55 +99,61 @@ CREATE TABLE `transactions` (
 -- Indexes for table `buyer`
 --
 ALTER TABLE `buyer`
-  ADD PRIMARY KEY (`BUYERID`);
+  ADD PRIMARY KEY (`buyerid`);
 
 --
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
-  ADD PRIMARY KEY (`CATID`);
+  ADD PRIMARY KEY (`catid`);
 
 --
 -- Indexes for table `seller`
 --
 ALTER TABLE `seller`
-  ADD PRIMARY KEY (`SELLERID`);
+  ADD PRIMARY KEY (`sellerid`);
 
 --
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
-  ADD PRIMARY KEY (`SERVICEID`),
-  ADD KEY `FK_RELATIONSHIP_4` (`CATID`),
-  ADD KEY `FK_RELATIONSHIP_6` (`SELLERID`);
+  ADD PRIMARY KEY (`serviceid`);
 
 --
 -- Indexes for table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD PRIMARY KEY (`TRANSID`),
-  ADD KEY `FK_RELATIONSHIP_3` (`SERVICEID`),
-  ADD KEY `FK_RELATIONSHIP_5` (`BUYERID`);
+  ADD PRIMARY KEY (`transid`);
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- Constraints for table `services`
+-- AUTO_INCREMENT for table `buyer`
+--
+ALTER TABLE `buyer`
+  MODIFY `buyerid` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `catid` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `seller`
+--
+ALTER TABLE `seller`
+  MODIFY `sellerid` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  ADD CONSTRAINT `FK_RELATIONSHIP_4` FOREIGN KEY (`CATID`) REFERENCES `categories` (`CATID`),
-  ADD CONSTRAINT `FK_RELATIONSHIP_6` FOREIGN KEY (`SELLERID`) REFERENCES `seller` (`SELLERID`);
-
+  MODIFY `serviceid` int(11) NOT NULL AUTO_INCREMENT;
 --
--- Constraints for table `transactions`
+-- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `FK_RELATIONSHIP_3` FOREIGN KEY (`SERVICEID`) REFERENCES `services` (`SERVICEID`),
-  ADD CONSTRAINT `FK_RELATIONSHIP_5` FOREIGN KEY (`BUYERID`) REFERENCES `buyer` (`BUYERID`);
-COMMIT;
-
+  MODIFY `transid` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

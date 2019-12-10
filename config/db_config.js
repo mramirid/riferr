@@ -1,9 +1,9 @@
-var mysql = require('mysql');
-var connection = mysql.createConnection({
-    host     : '127.0.0.1',
-    user     : 'root',
-    password : '',
-    database : 'riferr'
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'riferr'
 });
 
 connection.connect(function(err) {
