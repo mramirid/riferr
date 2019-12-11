@@ -20,7 +20,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         transaction_datetime: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     });
 };

@@ -30,6 +30,7 @@ module.exports = function (app) {
                     user_name: user.user_name,
                     user_phone: user.user_phone,
                     user_address: user.user_address,
+                    user_avatar: user.user_avatar,
                     user_role: user.user_role,
                     Services: user.Services.map(service => {
 

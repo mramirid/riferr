@@ -52,7 +52,7 @@ require('./routes/api')(app);
 require('./routes/profile')(app);
 // app.use('/login', loginRouter)(app.Router());
 // app.use('/dashboard',profileRouter);
-// app.use('/products', require('./routes/products'));
+require('./routes/products')(app);
 // app.use('/registrasi_buyer', registrasiRouter);
 
 // catch 404 and forward to error handler
