@@ -22,8 +22,7 @@ app.set('view engine', 'ejs');
 // Konfigurasi routing
 require('./routes/homepage')(app);
 require('./routes/login')(app);
-require('./routes/register')(app);
-require('./routes/api')(app);
+require('./routes/signup')(app);
 require('./routes/profile')(app);
 
 // Pasang port

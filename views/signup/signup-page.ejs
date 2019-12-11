@@ -13,7 +13,6 @@
 
 </head>
 <body>
-
 <div id="particles-js">
 
     <div class="container">
@@ -21,7 +20,12 @@
 
         <!-- Login -->
         <div class="login" style="height: 420px;">
-            <h1>Seller Registration Form</h1>
+            <input id="get_role" type="text" value="<% role %>" hidden>
+            <% if (role == 1) { %>
+                <h1>Seller Registration Form</h1>
+            <% } else if (role == 2) { %>
+                <h1>Buyer Registration Form</h1>
+            <% } %>
 
             <form class="form signup"><br>
                 <p class="field">
@@ -30,22 +34,22 @@
                 </p>
 
                 <p class="field">
-                    <input type="text" name="u_buyer" placeholder="Email" id="email-input" required/>
+                    <input type="text" placeholder="Email" id="email-input" required/>
                     <i class="fa fa-envelope"></i>
                 </p>
 
                 <p class="field">
-                    <input type="text" name="no_hp_buyer" placeholder="No Hp" id="phone-input" required/>
+                    <input type="text" placeholder="No Hp" id="phone-input" required/>
                     <i class="fa fa-mobile-phone" style="size: 152px;"></i>
                 </p>
 
                 <p class="field">
-                    <input type="text" name="alamat_buyer" placeholder="Alamat" id="address-input" required/>
+                    <input type="text" placeholder="Alamat" id="address-input" required/>
                     <i class="fa fa-location-arrow"></i>
                 </p>
 
                 <p class="field">
-                    <input type="password" name="p_buyer" placeholder="Password" id="password-input" required/>
+                    <input type="password" placeholder="Password" id="password-input" required/>
                     <i class="fa fa-lock"></i>
                 </p>
 
@@ -64,20 +68,17 @@
                 <script type="text/javascript">
                     document.write(new Date().getFullYear());
                 </script>
-                ,
                 <a style="color: gold" href="" target="_blank"> Riferr </a>
             </p>
         </div>
     </div>
-    <!--/ Login-->
-
 </div>
-<!-- scripts -->
-<script src="javascripts/jquery/jquery.min.js"></script>
-<script src="javascripts/auth/particles.js"></script>
-<script src="javascripts/auth/app.js"></script>
-<script src="javascripts/auth/seller.js"></script>
 
+<!-- scripts -->
+<script src="/javascripts/jquery/jquery.min.js"></script>
+<script src="/javascripts/auth/signup-page.js"></script>
+<script src="/javascripts/auth/particles.js"></script>
+<script src="/javascripts/auth/app.js"></script>
 </body>
 
 </html>

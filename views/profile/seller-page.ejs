@@ -31,16 +31,18 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav mr-auto"></ul>
             <span class="navbar-text actions">
-                <a class="login" href="profile" style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
+                <a class="login" href="/profile"
+                   style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
             </span>
             <span class="navbar-text actions">
-                <a class="login" href="add-product" style="font-size: 18px;font-family: Acme, sans-serif;">Add Product</a>
+                <a class="login" href="/add-product"
+                   style="font-size: 18px;font-family: Acme, sans-serif;">Add Product</a>
             </span>
             <span class="navbar-text actions">
-                <a class="login" href="profile/settings" style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
+                <a class="login" href="/profile/settings-page" style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
             </span>
             <span class="navbar-text actions">
-                <a class="login" href="logout" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
+                <a class="login" href="/logout" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
             </span>
         </div>
     </div>
@@ -49,8 +51,10 @@
 <div class="profile-card">
     <div class="profile-back" style="background-color: #ff5331;"></div>
     <img class="rounded-circle profile-pic" src="images/kholel.jpg">
-    <h3 class="profile-name" style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;"><%= data[0].user_name %></h3>
-    <p class="profile-bio" style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;"><%= data[0].user_email %></p>
+    <h3 class="profile-name"
+        style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;"><%= data[0].user_name %></h3>
+    <p class="profile-bio"
+       style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;"><%= data[0].user_email %></p>
 </div>
 
 <div class="row" style="font-family: Actor, sans-serif;">
