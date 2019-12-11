@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>profile-edit</title>
-    <link rel="stylesheet" href="stylesheets/bootstrap/4.3.1/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Chewy">
-    <link rel="stylesheet" href="stylesheets/profile-settings/Navigation-Profile-Settings.css">
-    <link rel="stylesheet" href="stylesheets/profile-settings-css/Profile-Edit-Form-1.css">
-    <link rel="stylesheet" href="stylesheets/profile-settings/Profile-Edit-Form.css">
-    <link rel="stylesheet" href="stylesheets/profile-settings/style.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap/4.3.1/bootstrap.min.css">
+    <link rel="stylesheet" href="/fonts/Acme.css">
+    <link rel="stylesheet" href="/fonts/Chewy.css">
+    <link rel="stylesheet" href="/stylesheets/profile-settings/Navigation-Profile-Settings.css">
+    <link rel="stylesheet" href="/stylesheets/profile-settings/Profile-Edit-Form-1.css">
+    <link rel="stylesheet" href="/stylesheets/profile-settings/Profile-Edit-Form.css">
+    <link rel="stylesheet" href="/stylesheets/profile-settings/styles.css">
 </head>
 
 <body>
@@ -47,13 +47,13 @@
                 </div>
             </div>
         </div>
-        <form>
+        <form method="post" action="/profile/settings/update" class="form-update" enctype="multipart/form-data">
             <div class="form-row profile-row">
                 <div class="col-md-4 relative">
                     <div class="avatar">
                         <div class="avatar-bg center"></div>
                     </div>
-                    <input type="file" class="form-control" name="avatar-file">
+                    <input type="file" class="form-control" name="avatarFile" id="update-avatar">
                 </div>
                 <div class="col-md-8">
                     <h1>Profile </h1>
@@ -62,37 +62,23 @@
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="form-control" type="text" name="firstname">
+                                <input class="form-control" id="update-name" type="text" name="firstname">
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div class="form-group">
                                 <label>Phone Number</label>
-                                <input class="form-control" type="number" name="lastname">
+                                <input class="form-control" id="update-phone" type="text" name="lastname">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
-                        <input class="form-control" type="text" autocomplete="off" required="" name="email">
+                        <input class="form-control" id="update-address" type="text" autocomplete="off" required="" name="email">
                     </div>
                     <div class="form-group">
                         <label>Email </label>
-                        <input class="form-control" type="email" autocomplete="off" required="" name="email">
-                    </div>
-                    <div class="form-row">
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-group">
-                                <label>Password </label>
-                                <input class="form-control" type="password" name="password" autocomplete="off" required="">
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6">
-                            <div class="form-group">
-                                <label>Confirm Password</label>
-                                <input class="form-control" type="password" name="confirmpass" autocomplete="off" required="">
-                            </div>
-                        </div>
+                        <input class="form-control" id="update-email" type="email" autocomplete="off" required="" name="email">
                     </div>
                     <hr>
                     <div class="form-row">
@@ -112,9 +98,9 @@
         </div>
     </footer>
 
-    <script src="javascripts/jquery/jquery.min.js"></script>
-    <script src="javascripts/boostrap/bootstrap.min.js"></script>
-    <script src="javascripts/profile/Profile-Edit-Form.js"></script>
+    <script src="/javascripts/jquery/jquery.min.js"></script>
+    <script src="/javascripts/boostrap/bootstrap.min.js"></script>
+    <script src="/javascripts/profile/Profile-Edit-Form.js"></script>
 </body>
 
 </html>

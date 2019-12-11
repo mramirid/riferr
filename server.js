@@ -6,6 +6,7 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('./config/passport');
 const path = require('path');
+
 // const createError = require('http-errors');
 
 // const cookieParser = require('cookie-parser');
@@ -28,6 +29,7 @@ app.use(session({secret: "FP PemWeb", resave: true, saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 // Router
 // const loginRouter = require('./routes/login');
 // const profileRouter = require('./routes/profile');
@@ -46,7 +48,7 @@ require('./routes/homepage')(app);
 require('./routes/login')(app);
 require('./routes/register_seller')(app);
 require('./routes/register_buyer')(app);
-require('./routes/api-routes')(app);
+require('./routes/api')(app);
 require('./routes/profile')(app);
 // app.use('/login', loginRouter)(app.Router());
 // app.use('/dashboard',profileRouter);

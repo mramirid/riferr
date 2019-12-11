@@ -34,4 +34,13 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+// db['Service'].belongsTo(db['Category'], {foreignKey: 'ID_category'})
+// db['Category'].hasMany(db['Service'])
+// db['Transaction'].belongsTo(db['Service'], {foreignKey: 'service_id'})
+// db['Service'].hasMany(db['Transaction'])
+// db['Transaction'].belongsTo(db['User'], {foreignKey: 'user_id'})
+// db['User'].hasMany(db['Transaction'])
+db['Service'].belongsTo(db['User'], {foreignKey: 'user_id'})
+db['User'].hasMany(db['Service'], {foreignKey: 'user_id'})
+
 module.exports = db;
