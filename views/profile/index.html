@@ -25,12 +25,14 @@
         <div class="container"><a class="navbar-brand" href="#" style="font-family: Chewy, cursive;font-size: 32px;">Riferr</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"> <a class="login" href="#" style="font-size: 18px;font-family: Acme, sans-serif;">Kholil Manab</a></span><span class="navbar-text actions"> <a class="login" href="#" style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a></span>
+                <ul class="nav navbar-nav mr-auto"></ul><span class="navbar-text actions"> <a class="login" href="#" style="font-size: 18px;font-family: Acme, sans-serif;">Kholil Manab</a></span><span class="navbar-text actions"> <a class="login" href="#" id="myBtn" style="font-size: 18px;font-family: Acme, sans-serif;">Add</a></span><span class="navbar-text actions"> <a class="login" href="#" style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a></span>
                 <span class="navbar-text actions"> <a class="login" href="#" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a></span>
             </div>
         </div>
     </nav>
 
+
+<section>
     <div class="profile-card">
         <div class="profile-back" style="background-color: #ff5331;"></div><img class="rounded-circle profile-pic" src="../../public/images/kholel.jpg">
         <h3 class="profile-name" style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;">Kholil Rachman Nur Manab</h3>
@@ -72,6 +74,46 @@
         <a href="#"><i class="icon ion-social-facebook"></i></a>
         <a href="#"></a><a href="#"><i class="icon ion-social-instagram"></i></a>
     </div>
+</section>
+    
+
+     <!-- The Modal -->
+<div id="myModal" class="modal" style="height: 100%;">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+    </div>
+    <div class="modal-body" style="height: 100%">
+      <form>
+        <div class="form-group">
+            <label>Categories</label>
+            <input type="text" name="categories" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea type="text" name="desc" class="form-control" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Price (Rupiah)</label>
+            <input type="text" class="form-control" name="price" required>
+        </div>
+        <div class="form-group">
+            <label>Photo</label>
+            <input type="file" class="form-control" name="photo" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+</div> 
     
     <footer id="footer">    
         <div style= "background: black; text-align: center; margin: 0px; padding:10px">
@@ -82,6 +124,33 @@
     <script src="../../public/javascripts/jquery/jquery.min.js"></script>
     <script src="../../public/javascripts/profile/image-card-materialize.js"></script>
     <script src="../../public/javascripts/boostrap/bootstrap.min.js"></script>
+    <script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
 </body>
 
 </html>
