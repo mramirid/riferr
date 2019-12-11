@@ -58,16 +58,16 @@ module.exports = function (app) {
     });
 
     app.post('/profile/settings/update', upload.single('avatarFile'), function (req, res) {
-        console.log(req.user.user_id)
-        db.User.update({
-            user_name:req.body.user_name,
-            user_phone:req.body.user_phone,
-            user_address: req.body.user_address
-        },{ where:{user_id: req.user.user_id}})
-            .then(function (rowsUpdated) {
-            res.json(rowsUpdated)
+        
+        const newData = {
+            user_name: req.body.name,
+            user_phone: req.body.phone,
+            user_address: req.body.address
+        };
+        db.User.update(newData, {where: {user_id: req.user.user_id}}).then(updated=>{
+            console.log(updated)
+            res.json(updated)
         })
-
-        // res.json(req.user)
+        
     })
 };
