@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     }
 });
 
-var storage1 = multer.diskStorage({
+const storage1 = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/uploads/services/')
     },
@@ -22,7 +22,7 @@ var storage1 = multer.diskStorage({
 });
 
 const upload = multer({storage: storage});
-const addPro = multer({storage:storage1});
+const addPro = multer({storage: storage1});
 
 module.exports = function (app) {
     app.get('/profile', function (req, res) {
@@ -57,16 +57,16 @@ module.exports = function (app) {
                 })
             });
 
-            db.Category.findAll().then(dbCategory=>{
-                const categories = dbCategory.map(cat=>{
-                    return Object.assign({},{
-                        ID_category:cat.ID_category,
-                        category:cat.category
+            db.Category.findAll().then(dbCategory => {
+                const categories = dbCategory.map(cat => {
+                    return Object.assign({}, {
+                        ID_category: cat.ID_category,
+                        category: cat.category
                     })
-                })
+                });
 
-                if(resObj && categories)
-                    res.render("profile/seller", {data: resObj, categories: categories})
+                if (resObj && categories)
+                    res.render("profile/seller-page", {data: resObj, categories: categories})
             })
         })
     });
@@ -112,7 +112,8 @@ module.exports = function (app) {
             res.redirect(307, '/profile/settings-page');
         });
     });
-    app.post('/profile/add-product',addPro.single('photo'),function(req,res){
+
+    app.post('/profile/add-product', addPro.single('photo'), function (req, res) {
         db.Service.create({
             ID_category: req.body.category,
             user_id: req.user.user_id,
