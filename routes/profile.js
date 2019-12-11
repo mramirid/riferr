@@ -2,9 +2,8 @@ const path = require("path");
 const db = require("../models");
 
 // Untuk operasi upload file
-const uuidv1 = require('uuid/v1');
 const multer = require('multer');
-var storage = multer.diskStorage({
+const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'public/uploads/avatars/')
     },
@@ -47,27 +46,34 @@ module.exports = function (app) {
             });
 
             if (resObj) {
-                res.render("profile/seller", {data: resObj})
-                // res.json(resObj);
+                res.render("profile/seller-page", {data: resObj})
             }
         })
     });
 
-    app.get('/profile/settings', function (req, res) {
-        res.render('profile/settings')
+    // Route untuk me-logout user
+    app.get('/profile/logout', function (req, res) {
+        req.logout();
+        res.redirect('/');
     });
 
-    app.post('/profile/settings/update', upload.single('avatarFile'), function (req, res) {
-        
+    // Route untuk redirect ke halaman settings profile
+    app.get('/profile/settings-page', function (req, res) {
+        res.render('profile/settings-page')
+    });
+
+    // Route untuk update data
+    app.post('/profile/settings/update-now', upload.single('avatarFile'), function (req, res) {
+
         const newData = {
             user_name: req.body.name,
             user_phone: req.body.phone,
             user_address: req.body.address
         };
-        db.User.update(newData, {where: {user_id: req.user.user_id}}).then(updated=>{
-            console.log(updated)
-            res.json(updated)
-        })
-        
-    })
+
+        db.User.update(newData, {where: {user_id: req.user.user_id}}).then(updated => {
+            console.log(updated);
+            res.json(updated);
+        });
+    });
 };

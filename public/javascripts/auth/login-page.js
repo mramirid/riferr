@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     // Post ke route '/api/login', jika sukses redirect ke homepage
     function loginUser(email, password) {
-        $.post("/api/login", {
+        $.post("/login/login-now", {
             user_email: email,
             user_password: password
         }).then(function (data) {
