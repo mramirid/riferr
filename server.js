@@ -24,6 +24,7 @@ require('./routes/homepage')(app);
 require('./routes/login')(app);
 require('./routes/signup')(app);
 require('./routes/profile')(app);
+require('./routes/products')(app);
 
 // Pasang port
 const PORT = process.env.PORT || 3000;
