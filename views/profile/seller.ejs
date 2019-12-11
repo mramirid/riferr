@@ -22,26 +22,26 @@
 <body style="font-family: Chewy, cursive;">
 
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-    <div class="container"><a class="navbar-brand" href="#"
-                              style="font-family: Chewy, cursive;font-size: 32px;">Riferr</a>
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
-                    class="navbar-toggler-icon"></span></button>
-        <div
-                class="collapse navbar-collapse" id="navcol-1">
+    <div class="container">
+        <a class="navbar-brand" href="#" style="font-family: Chewy, cursive;font-size: 32px;">Riferr</a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav mr-auto"></ul>
             <span class="navbar-text actions">
-                    <a class="login" href="profile"
-                       style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
-                </span>
+                <a class="login" href="profile" style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
+            </span>
             <span class="navbar-text actions">
-                    <a class="login" href="add-product" style="font-size: 18px;font-family: Acme, sans-serif;">Add Product</a>
-                </span>
+                <a class="login" href="add-product" style="font-size: 18px;font-family: Acme, sans-serif;">Add Product</a>
+            </span>
             <span class="navbar-text actions">
-                    <a class="login" href="profile/settings" style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
-                </span>
+                <a class="login" href="profile/settings" style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
+            </span>
             <span class="navbar-text actions">
-                    <a class="login" href="logout" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
-                </span>
+                <a class="login" href="logout" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
+            </span>
         </div>
     </div>
 </nav>
@@ -49,10 +49,8 @@
 <div class="profile-card">
     <div class="profile-back" style="background-color: #ff5331;"></div>
     <img class="rounded-circle profile-pic" src="images/kholel.jpg">
-    <h3 class="profile-name"
-        style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;"><%= data[0].user_name %></h3>
-    <p class="profile-bio"
-       style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;"><%= data[0].user_email %></p>
+    <h3 class="profile-name" style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;"><%= data[0].user_name %></h3>
+    <p class="profile-bio" style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;"><%= data[0].user_email %></p>
 </div>
 
 <div class="row" style="font-family: Actor, sans-serif;">
@@ -73,14 +71,15 @@
 </div>
 
 <footer id="footer">
-    <div style="background: black; text-align: center; margin: 0px; padding:10px">
-        <p style="color:grey; font-family: Acme; font-size: 18px;">Copyright (c) 2019 Riferr</p>
+    <div style="background: black; text-align: center; margin: 0; padding:10px">
+        <p style="color:grey; font-family: Acme, sans-serif; font-size: 18px;">Copyright (c) 2019 Riferr</p>
     </div>
 </footer>
 
 <script src="javascripts/jquery/jquery.min.js"></script>
 <script src="javascripts/profile/image-card-materialize.js"></script>
 <script src="javascripts/boostrap/bootstrap.min.js"></script>
+
 </body>
 
 </html>

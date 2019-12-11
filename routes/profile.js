@@ -2,7 +2,6 @@ const path = require("path");
 const db = require("../models");
 
 // Untuk operasi upload file
-const uuidv1 = require('uuid/v1');
 const multer = require('multer');
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -53,21 +52,13 @@ module.exports = function (app) {
         })
     });
 
+    // Route untuk me-logout user
+    app.get('/profile/logout', function (req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
     app.get('/profile/settings', function (req, res) {
         res.render('profile/settings')
     });
-
-    app.post('/profile/settings/update', upload.single('avatarFile'), function (req, res) {
-        console.log(req.user.user_id)
-        db.User.update({
-            user_name:req.body.user_name,
-            user_phone:req.body.user_phone,
-            user_address: req.body.user_address
-        },{ where:{user_id: req.user.user_id}})
-            .then(function (rowsUpdated) {
-            res.json(rowsUpdated)
-        })
-
-        // res.json(req.user)
-    })
 };
