@@ -78,12 +78,16 @@ module.exports = function (app) {
 
     // Route untuk redirect ke halaman settings profile
     app.get('/profile/settings-page', function (req, res) {
-        res.render('profile/settings-page', {
-            name: req.user.user_name,
-            phone: req.user.user_phone,
-            address: req.user.user_address,
-            email: req.user.user_email,
-            avatar: req.user.user_avatar
+        db.User.findOne({
+            where: {user_id: req.user.user_id}
+        }).then(function (dbUser) {
+            res.render('profile/settings-page', {
+                name: dbUser.user_name,
+                phone: dbUser.user_phone,
+                address: dbUser.user_address,
+                email: dbUser.user_email,
+                avatar: dbUser.user_avatar
+            });
         });
     });
 
@@ -105,10 +109,9 @@ module.exports = function (app) {
             req.login(req.user, function (err) {
                 if (err) return next(new Error('Gagal update'));
                 console.log("Update berhasil");
-                next();
             });
 
-            res.redirect(307, '/profile/settings-page');
+            res.redirect('/profile/settings-page');
         });
     });
 
