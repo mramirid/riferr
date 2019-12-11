@@ -20,6 +20,8 @@ $(document).ready(function () {
             user_role: getRole.val().trim()
         };
 
+        console.log(userData.user_role);
+
         // if (!userData.user_email || !userData.user_phone || !userData.user_address || !userData.user_password) {
         //     return;
         // } //lewat html ae lur
