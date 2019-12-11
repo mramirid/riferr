@@ -1,5 +1,6 @@
 $(document).ready(function() {
     const signUpForm = $('form.signup');
+    const nameInput = $('input#name-input');
     const emailInput = $('input#email-input');
     const phoneInput = $('input#phone-input');
     const addressInput = $('input#address-input');
@@ -10,6 +11,7 @@ $(document).ready(function() {
         event.preventDefault();
 
         const userData = {
+            user_name: nameInput.val().trim(),
             user_email: emailInput.val().trim(),
             user_phone: phoneInput.val().trim(),
             user_address: addressInput.val().trim(),
@@ -21,7 +23,8 @@ $(document).ready(function() {
         // } //lewat html ae lur
 
         // Daftarkan user
-        signUpUser(userData.user_email, userData.user_phone, userData.user_address, userData.user_password);
+        signUpUser(userData.user_name, userData.user_email, userData.user_phone, userData.user_address, userData.user_password);
+        nameInput.val('');
         emailInput.val('');
         phoneInput.val('');
         addressInput.val('');

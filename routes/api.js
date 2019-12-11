@@ -14,7 +14,8 @@ module.exports = function (app) {
             user_phone: req.body.user_phone,
             user_address: req.body.user_address,
             user_password: req.body.user_password,
-            user_name: "name",
+            user_name: req.body.user_name,
+            user_avatar: 'default_avatar.jpg',
             user_role: req.body.user_role
         }).then(function () {
             res.redirect(307, 'login');
