@@ -11,7 +11,18 @@ const storage = multer.diskStorage({
         cb(null, file.fieldname + Date.now() + '.jpg')
     }
 });
+
+var storage1 = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads/services/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.fieldname + Date.now() + '.jpg')
+    }
+});
+
 const upload = multer({storage: storage});
+const addPro = multer({storage:storage1});
 
 module.exports = function (app) {
     app.get('/profile', function (req, res) {
@@ -29,6 +40,7 @@ module.exports = function (app) {
                     user_name: user.user_name,
                     user_phone: user.user_phone,
                     user_address: user.user_address,
+                    user_avatar: user.user_avatar,
                     user_role: user.user_role,
                     Services: user.Services.map(service => {
 
@@ -45,9 +57,17 @@ module.exports = function (app) {
                 })
             });
 
-            if (resObj) {
-                res.render("profile/seller-page", {data: resObj})
-            }
+            db.Category.findAll().then(dbCategory=>{
+                const categories = dbCategory.map(cat=>{
+                    return Object.assign({},{
+                        ID_category:cat.ID_category,
+                        category:cat.category
+                    })
+                })
+
+                if(resObj && categories)
+                    res.render("profile/seller", {data: resObj, categories: categories})
+            })
         })
     });
 
@@ -92,4 +112,19 @@ module.exports = function (app) {
             res.redirect(307, '/profile/settings-page');
         });
     });
+    app.post('/profile/add-product',addPro.single('photo'),function(req,res){
+        db.Service.create({
+            ID_category: req.body.category,
+            user_id: req.user.user_id,
+            service_title: req.body.title,
+            service_desc: req.body.desc,
+            service_price: req.body.price,
+            image_path: req.file.filename
+        }).then(function () {
+            res.redirect('/profile');
+        }).catch(function (err) {
+            console.log(err);
+            res.json(err);
+        });
+    })
 };
