@@ -9,8 +9,9 @@ const db = require('../models');
 // Kita ingin login menggunakan email & password
 passport.use(new LocalStrategy({
     // Login menggunakan email
-    usernameField: 'user_email'
-}, function (user_email, password, done) {
+    usernameField: 'user_email',
+    passwordField: 'user_password'
+}, function (user_email, user_password, done) {
     db.User.findOne({
         where: {user_email: user_email}
     }).then(function (dbUser) {
@@ -21,7 +22,7 @@ passport.use(new LocalStrategy({
             });
         }
         // Jika email terdaftar & password salah
-        else if (!dbUser.validPassword(passport)) {
+        else if (!dbUser.validPassword(user_password)) {
             return done(null, false, {
                 message: 'Password salah'
             });
