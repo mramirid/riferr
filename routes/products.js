@@ -28,7 +28,6 @@ module.exports = function (app) {
         connection.on('error', function (err) {
             res.send("connection error");
             res.end();
-            return;
         });
 
     });
@@ -36,4 +35,4 @@ module.exports = function (app) {
     app.get('/details/:servicesid', function (req, res, next) {
         res.render('products/detail-products', {page: 'details', menuId: 'home'});
     });
-}
+};

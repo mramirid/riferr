@@ -1,4 +1,3 @@
-const path = require("path");
 const db = require("../models");
 
 // Untuk operasi upload file
@@ -113,6 +112,7 @@ module.exports = function (app) {
         });
     });
 
+    // Route untuk tambah service
     app.post('/profile/add-product', addPro.single('photo'), function (req, res) {
         db.Service.create({
             ID_category: req.body.category,
