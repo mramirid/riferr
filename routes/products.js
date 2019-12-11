@@ -3,9 +3,6 @@
 // const connection = require('../dbConfig');
 
 module.exports= function( app){
-	app.get('/nice', function (req,res,next) {
-		res.render('products/detail-order');
-	});
 
 	app.get('/check/:data', function (req,res,next) {
 		res.render('products/checkout',{data:req.params.data});

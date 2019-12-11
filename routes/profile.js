@@ -61,4 +61,18 @@ module.exports = function (app) {
     app.get('/profile/settings', function (req, res) {
         res.render('profile/settings')
     });
+
+    app.post('/profile/settings/update', upload.single('avatarFile'), function (req, res) {
+        
+        const newData = {
+            user_name: req.body.name,
+            user_phone: req.body.phone,
+            user_address: req.body.address
+        };
+        db.User.update(newData, {where: {user_id: req.user.user_id}}).then(updated=>{
+            console.log(updated)
+            res.json(updated)
+        })
+        
+    })
 };
