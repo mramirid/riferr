@@ -59,21 +59,37 @@ module.exports = function (app) {
 
     // Route untuk redirect ke halaman settings profile
     app.get('/profile/settings-page', function (req, res) {
-        res.render('profile/settings-page')
+        res.render('profile/settings-page', {
+            name: req.user.user_name,
+            phone: req.user.user_phone,
+            address: req.user.user_address,
+            email: req.user.user_email,
+            avatar: req.user.user_avatar
+        });
     });
 
     // Route untuk update data
-    app.post('/profile/settings/update-now', upload.single('avatarFile'), function (req, res) {
+    app.post('/profile/settings/update-now', upload.single('avatarFile'), function (req, res, next) {
+        if (!req.file) filename = 'default_avatar.jpg';
+        else filename = req.file.filename;
 
         const newData = {
             user_name: req.body.name,
             user_phone: req.body.phone,
-            user_address: req.body.address
+            user_address: req.body.address,
+            user_avatar: filename
         };
 
         db.User.update(newData, {where: {user_id: req.user.user_id}}).then(updated => {
             console.log(updated);
-            res.json(updated);
+
+            req.login(req.user, function (err) {
+                if (err) return next(new Error('Gagal update'));
+                console.log("Update berhasil");
+                next();
+            });
+
+            res.redirect(307, '/profile/settings-page');
         });
     });
 };
