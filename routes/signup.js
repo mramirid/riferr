@@ -3,7 +3,12 @@ const db = require('../models');
 module.exports = function (app) {
     // Register seller page
     app.get('/signup/:role', function (req, res) {
-        res.render('signup/signup-page', {role: req.params.role});
+        if (req.user) {
+            res.redirect('/products/all');
+        } else {
+            // Jika user belum login
+            res.render('signup/signup-page', {role: req.params.role});
+        }
     });
 
     // Route untuk mendaftarkan user. Jika sukses, loginkan user

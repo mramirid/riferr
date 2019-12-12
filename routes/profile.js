@@ -95,9 +95,9 @@ module.exports = function (app) {
                     }]
                 }]
             }).then(dbTransaction => {
-                // res.render('profile/seller-page',{data:[req.user], transact:dbTransaction})
-                res.json(dbTransaction)
-            })
+                res.render('profile/seller-page', {data: [req.user], transact: dbTransaction})
+                // res.json(dbTransaction)
+            });
         }
 
 
@@ -163,5 +163,20 @@ module.exports = function (app) {
             console.log(err);
             res.json(err);
         });
-    })
+    });
+
+    // Route untuk melihat list transaksi dari seller
+    app.get('/profile/seller/transactions', function (req, res) {
+        db.Transaction.findAll({
+            include: [{
+                model: db.Service, attributes: ['service_title', 'service_price', 'user_id'],
+                where: {user_id: req.user.user_id},
+            }, {
+                model: db.User, attribute: ['user_name']
+            }]
+        }).then(dbTransaction => {
+            res.render('profile/seller-transactions-page', {data: [req.user], transact: dbTransaction})
+            // res.json(dbTransaction)
+        });
+    });
 };

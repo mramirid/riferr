@@ -10,7 +10,7 @@ module.exports = function (app) {
     app.get('/login', function (req, res) {
         // Jika user sudah login, redirect ke homepage
         if (req.user) {
-            res.redirect('/');
+            res.redirect('/products/all');
         } else {
             // Jika user belum login
             res.render('login/login-page');
