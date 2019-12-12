@@ -1,0 +1,28 @@
+<% for (var i = 0; i < data.length; i++) { 
+	for (var j = 0; j < data[i].Services.length; j++) {%>
+
+<div class="col-sm-3 card">
+	<div id="carousel-list-<%=i%>" class="carousel slide" data-ride="carousel" data-interval="false">
+		
+		
+		<div class="carousel-inner">
+			
+			<div class="carousel-item active">
+		      <img class="d-block w-100 img-card-top" src="/uploads/services/<%= data[i].Services[j].image_path %>" alt="First slide">
+		    </div>
+		    
+		</div>
+
+	</div>
+	<div class="card-body">
+		<img src="/uploads/avatars/<%= data[i].user_avatar %>">
+		<a href=""> <small><%= data[i].user_name %></small> </a>
+		<STRONG><p><a href="details/<%=data[i].Services[j].service_id %>"><%= data[i].Services[j].service_title %></a></p></STRONG>
+	</div>
+	<div class="card-footer text-right">
+		<p class="text-muted m-0"> <strong> &#20803; <%= data[i].Services[j].service_price %> </strong></p>
+	</div>
+</div>
+
+<%
+}}%>

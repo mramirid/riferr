@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% include ../partials/head %>
+</head>
+<body>
+	<% include ../partials/menu %>
+	<div class="container-fluid" style="margin-top: 60px;">
+		<div class="detail-page row border-top border-bottom p-2">
+			<div class="col-md-12">
+				<h3 class="p-0 m-0"><%= data[0].Services[0].service_title %></h3>
+				<img src="/uploads/avatars/<%= data[0].user_avatar %>">
+				<small><%= data[0].user_name %></small>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="carousel-section m-auto">
+					<div id="detail-carousel" data-interval="false" class="carousel slide" data-ride="carousel">
+					  <div class="carousel-inner">
+					    <div class="carousel-item active">
+					      <img class="d-block w-100" src="/uploads/services/<%= data[0].Services[0].image_path %>" alt="First slide">
+					    </div>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card border-success mb-3 detail-desc">
+  					<div class="card-header"><h3>About The Gig</h3></div>
+					<div class="card-body text-primary">
+						<p> <%= data[0].Services[0].service_desc %> </p>
+					</div>
+					<div class="card-footer">
+						<button id="buy" class="btn btn-success float-right">buy</button>
+						<button id="buyreq" class="btn btn-success float-right" form="form1" type="submit">Hire</button>
+						<p class="btn float-left m-0" href="" role="button"> Rp <%= data[0].Services[0].service_price %> </p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<% include ../partials/footer %>
+</body>
+<% include ../partials/script %>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#buyreq').hide();
+		$('#buy').click(function(){
+			$('.card-header').html("<h3>Tell seller what you want</h3>")
+			$('.card-body').html('<div><form id="form1" action="/products/transaction" method="POST">'+
+					'<textarea name="req" type="text" cols="40" rows="10"></textarea>'+
+					'<input type="text" name="service_id" hidden value="<%= data[0].Services[0].service_id %>">'+
+					'<input type="text" name="user_id" hidden value="<%= user %>">'+
+				'</form></div>');
+			$('#buyreq').show();
+			$('#buy').hide();
+		});
+	});
+</script>
+</html>
