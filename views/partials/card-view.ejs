@@ -8,14 +8,14 @@
 		<div class="carousel-inner">
 			
 			<div class="carousel-item active">
-		      <img class="d-block w-100 img-card-top" src="/public/uploads/services/<%= data[i].Services[j].image_path %>" alt="First slide">
+		      <img class="d-block w-100 img-card-top" src="/uploads/services/<%= data[i].Services[j].image_path %>" alt="First slide">
 		    </div>
 		    
 		</div>
 
 	</div>
 	<div class="card-body">
-		<img src="/public/uploads/avatars/<%= data[i].user_avatar %>">
+		<img src="/uploads/avatars/<%= data[i].user_avatar %>">
 		<a href=""> <small><%= data[i].user_name %></small> </a>
 		<STRONG><p><a href="details/<%=data[i].Services[j].service_id %>"><%= data[i].Services[j].service_title %></a></p></STRONG>
 	</div>

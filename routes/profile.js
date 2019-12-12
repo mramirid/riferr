@@ -169,7 +169,7 @@ module.exports = function (app) {
     app.get('/profile/seller/transactions', function (req, res) {
         db.Transaction.findAll({
             include: [{
-                model: db.Service, attributes: ['service_title', 'service_price', 'user_id'],
+                model: db.Service, attributes: ['service_title', 'service_price', 'user_id','service_id'],
                 where: {user_id: req.user.user_id},
             }, {
                 model: db.User, attribute: ['user_name']

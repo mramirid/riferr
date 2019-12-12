@@ -86,12 +86,12 @@
                     <td><%= transact[i].transaction_datetime %></td>
                     <td>
                         <button class="btn btn-success" style="margin-left: 5px;" type="submit">
-                            <i class="fa fa-check" style="font-size: 15px;"></i>
+                            <a class="fa fa-check" style="font-size: 15px;" href="/products/delete/<%= transact[i].Service.service_id %>"></a>
                         </button>
                         <button class="btn btn-danger"
                                 style="margin-left: 5px;margin-top: 10px;margin-right: auto;margin-bottom: auto;"
                                 type="submit">
-                            <i class="fa fa-trash" style="font-size: 15px;"></i>
+                            <a class="fa fa-trash" style="font-size: 15px;" href="/products/delete/<%= transact[i].Service.service_id %>"></a>
                         </button>
                     </td>
                 </tr>
