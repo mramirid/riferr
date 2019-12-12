@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="stylesheets/profile/styles.css">
     <link rel="stylesheet" href="stylesheets/profile/Profile-Card.css">
     <link rel="stylesheet" href="stylesheets/profile/Social-Icons.css">
+    <link rel="stylesheet" href="assets/css/Table-With-Search-1.css">
+    <link rel="stylesheet" href="assets/css/Table-With-Search.css">
 </head>
 
 <body style="font-family: Chewy, cursive;">
@@ -33,9 +35,10 @@
                 <a class="login" href="profile"
                    style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
             </span>
+            <% if(data[0].user_role != 2){ %>
             <span class="navbar-text actions">
                 <a class="login" href="#" id="myBtn" style="font-size: 18px; font-family: Acme, sans-serif;">Add</a>
-            </span>
+            </span> <%}%>
             <span class="navbar-text actions">
                 <a class="login" href="/profile/settings-page"
                    style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
@@ -56,6 +59,7 @@
        style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;"><%= data[0].user_email %></p>
 </div>
 
+<% if(data[0].user_role != 2){ %>
 <div class="row" style="font-family: Actor, sans-serif;">
     <% for (var i = 0; i < data[0].Services.length; i++){ %>
         <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;min-height:300px;">
@@ -112,7 +116,42 @@
         </div>
     </div>
 </div>
+<%}else{
+    for(var i=0; i< transact.length;i++){
+%>
+    <div class="col-md-12 search-table-col"><span class="counter pull-right"></span>
+        <div class="table-responsive table-bordered table table-hover table-bordered results">
+            <table class="table table-bordered table-hover">
+                <thead class="bill-header cs">
+                <tr>
+                    <th id="trs-hd" class="col-lg-1" style="width: 18%;">Service Name</th>
+                    <th id="trs-hd" class="col-lg-2" style="width: 18%;">Seller</th>
+                    <th id="trs-hd" class="col-lg-3" style="width: 12%;">Price</th>
+                    <th id="trs-hd" class="col-lg-2" style="width: 30%;">Note</th>
+                    <th id="trs-hd" class="col-lg-2" style="width: 18%;">Date</th>
+                    <th id="trs-hd" class="col-lg-2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="warning no-result">
+                    <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
+                </tr>
+                <tr>
+                    <td>01</td>
+                    <td style="width: 18%;">India</td>
+                    <td>Souvik Kundu</td>
+                    <td>Bootstrap Stuido</td>
+                    <td>2014</td>
+                    <td><button class="btn btn-success" style="margin-left: 5px;" type="submit"><i class="fa fa-check" style="font-size: 15px;"></i></button><button class="btn btn-danger" style="margin-left: 5px;margin-top: 10px;margin-right: auto;margin-bottom: auto;"
+                                                                                                                                                                     type="submit"><i class="fa fa-trash" style="font-size: 15px;margin-top: 10;"></i></button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <%= transact[0].Service.User.user_name %>
 
+<%}}%>
 <script src="javascripts/jquery/jquery.min.js"></script>
 <script src="javascripts/profile/image-card-materialize.js"></script>
 <script src="javascripts/boostrap/bootstrap.min.js"></script>

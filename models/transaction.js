@@ -19,10 +19,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        transaction_file:{
-            type: DataTypes.STRING,
-            allowNull: true
-        },
         transaction_datetime: {
             type: DataTypes.STRING,
             allowNull: true
