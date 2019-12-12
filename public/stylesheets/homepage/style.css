@@ -97,15 +97,15 @@ a {
 	width: 100%;
 	border-bottom: 41vw solid;
 	border-right: 80vw solid;
-	border-bottom-color: grey;
+	border-bottom-color: #ff7538;
 	border-right-color: #f7d47a;
 	z-index: -1;
 }
 
 .imagekelas{
 	margin-left: 50vw;
-	margin-top: 4.8vw;
-	width: 38vw;
+	margin-top: 6vw;
+	width: 41vw;
 }
 
 .Hero-Header{

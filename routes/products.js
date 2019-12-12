@@ -123,22 +123,18 @@ module.exports = function (app) {
             transaction_req: req.body.req,
             transaction_datetime: date + ' ' + time
         }).then(function () {
-            res.redirect(307, '/login/login-now');
+            res.redirect('/profile');
         }).catch(err => {
             console.log(err);
             res.json(err);
         });
     });
 
-    app.get('/products/delete/:service_id', function (req, res) {
+    app.get('/products/delete/:transaction_id', function (req, res) {
         db.Transaction.destroy({
-            where: {service_id: req.params.service_id}
+            where: {transaction_id: req.params.transaction_id}
         }).then(function () {
-            db.Service.destroy({
-                where: {service_id: req.params.service_id}
-            }).then(function () {
-                res.end("DONE");
-            });
+            res.redirect('/profile');
         });
     });
 };

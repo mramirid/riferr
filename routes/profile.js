@@ -89,7 +89,7 @@ module.exports = function (app) {
             db.Transaction.findAll({
                 where: {user_id: req.user.user_id},
                 include: [{
-                    model: db.Service, attributes: ['service_title', 'service_price'],
+                    model: db.Service, attributes: ['service_title', 'service_price','service_id'],
                     include: [{
                         model: db.User, attributes: ['user_name']
                     }]

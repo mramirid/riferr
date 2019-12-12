@@ -9,7 +9,7 @@
 		<div class="detail-page row border-top border-bottom p-2">
 			<div class="col-md-12">
 				<h3 class="p-0 m-0"><%= data[0].Services[0].service_title %></h3>
-				<img src="../../images/kholel 2.png">
+				<img src="/uploads/avatars/<%= data[0].user_avatar %>">
 				<small><%= data[0].user_name %></small>
 			</div>
 		</div>
@@ -19,8 +19,9 @@
 					<div id="detail-carousel" data-interval="false" class="carousel slide" data-ride="carousel">
 					  <div class="carousel-inner">
 					    <div class="carousel-item active">
-					      <img class="d-block w-100" src="/public/uploads/services/<%= data[0].Services[0].image_path %>" alt="First slide">
+					      <img class="d-block w-100" src="/uploads/services/<%= data[0].Services[0].image_path %>" alt="First slide">
 					    </div>
+					</div>
 					</div>
 				</div>
 			</div>

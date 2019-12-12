@@ -78,7 +78,7 @@
                         <p><%= data[0].Services[i].service_desc %></p>
                     </div>
                     <div class="card-footer text-center">
-                        <small><a href="#"><i class="fa fa-eye pr-1"></i>Lihat<br></a></small>
+                        <small><a href="/products/details/<%= data[0].Services[i].service_id %>"><i class="fa fa-eye pr-1"></i>Lihat<br></a></small>
                     </div>
                 </div>
             </div>
@@ -154,12 +154,12 @@
                         <td><%= transact[i].transaction_datetime %></td>
                         <td>
                             <button class="btn btn-success" style="margin-left: 5px;" type="submit">
-                                <i class="fa fa-check" style="font-size: 15px;"></i>
+                                <a class="fa fa-check" style="font-size: 15px;" href="/products/delete/<%= transact[i].transaction_id %>"></a>
                             </button>
                             <button class="btn btn-danger"
                                     style="margin-left: 5px;margin-top: 10px;margin-right: auto;margin-bottom: auto;"
                                     type="submit">
-                                <i class="fa fa-trash" style="font-size: 15px;"></i>
+                                <a class="fa fa-trash" style="font-size: 15px;" href="/products/delete/<%= transact[i].transaction_id %>"></a>
                             </button>
                         </td>
                     </tr>
