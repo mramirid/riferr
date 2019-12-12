@@ -7,16 +7,18 @@
     <title>Profile</title>
     <link rel="stylesheet" href="/fonts/Acme.css">
     <link rel="stylesheet" href="/fonts/Chewy.css">
-    <link rel="stylesheet" href="fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/ionicons.min.css">
-    <link rel="stylesheet" href="stylesheets/profile/Block-Responsive-Item-List.css">
-    <link rel="stylesheet" href="stylesheets/profile/image-card-materialize-1.css">
-    <link rel="stylesheet" href="stylesheets/profile/image-card-materialize.css">
-    <link rel="stylesheet" href="stylesheets/bootstrap/4.3.1/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/profile/Navigation-Profile.css">
-    <link rel="stylesheet" href="stylesheets/profile/styles.css">
-    <link rel="stylesheet" href="stylesheets/profile/Profile-Card.css">
-    <link rel="stylesheet" href="stylesheets/profile/Social-Icons.css">
+    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="/stylesheets/profile/Block-Responsive-Item-List.css">
+    <link rel="stylesheet" href="/stylesheets/profile/image-card-materialize-1.css">
+    <link rel="stylesheet" href="/stylesheets/profile/image-card-materialize.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap/4.3.1/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/profile/Navigation-Profile.css">
+    <link rel="stylesheet" href="/stylesheets/profile/styles.css">
+    <link rel="stylesheet" href="/stylesheets/profile/Profile-Card.css">
+    <link rel="stylesheet" href="/stylesheets/profile/Social-Icons.css">
+    <link rel="stylesheet" href="/stylesheets/profile/Table-With-Search-1.css">
+    <link rel="stylesheet" href="/stylesheets/profile/Table-With-Search.css">
 </head>
 
 <body style="font-family: Chewy, cursive;">
@@ -30,18 +32,25 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav mr-auto"></ul>
             <span class="navbar-text actions">
-                <a class="login" href="profile"
+                <a class="login" href="/profile"
                    style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
             </span>
-            <span class="navbar-text actions">
+            <% if(data[0].user_role != 2){ %>
+                <span class="navbar-text actions">
                 <a class="login" href="#" id="myBtn" style="font-size: 18px; font-family: Acme, sans-serif;">Add</a>
             </span>
+                <span class="navbar-text actions">
+                <a class="login" href="/profile/seller/transactions"
+                   style="font-size: 18px; font-family: Acme, sans-serif;">Transactions</a>
+            </span>
+            <% } %>
             <span class="navbar-text actions">
                 <a class="login" href="/profile/settings-page"
                    style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
             </span>
             <span class="navbar-text actions">
-                <a class="login" href="/profile/logout" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
+                <a class="login" href="/profile/logout"
+                   style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
             </span>
         </div>
     </div>
@@ -56,66 +65,115 @@
        style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;"><%= data[0].user_email %></p>
 </div>
 
-<div class="row" style="font-family: Actor, sans-serif;">
-    <% for (var i = 0; i < data[0].Services.length; i++){ %>
-        <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12" style="min-width:300px;min-height:300px;">
-            <div class="card"><a href="#">
-                    <img class="card-img-top" style="height:200px;"
-                         src="uploads/services/<%= data[0].Services[i].image_path %>"></a>
-                <div class="card-body">
-                    <h5><%= data[0].Services[i].service_title %></h5>
-                    <p><%= data[0].Services[i].service_desc %></p>
-                </div>
-                <div class="card-footer text-center">
-                    <small><a href="#"><i class="fa fa-eye pr-1"></i>Lihat<br></a></small>
+<% if (data[0].user_role != 2){ %>
+    <div class="row" style="font-family: Actor, sans-serif;">
+        <% for (var i = 0; i < data[0].Services.length; i++){ %>
+            <div class="col-4 py-3 mx-auto col-xl-4 col-lg-6 col-md-6 col-sm-12"
+                 style="min-width:300px;min-height:300px;">
+                <div class="card"><a href="/products/details/<%= data[0].Services[i].service_id %>">
+                        <img class="card-img-top" style="height:200px;"
+                             src="uploads/services/<%= data[0].Services[i].image_path %>"></a>
+                    <div class="card-body">
+                        <h5><%= data[0].Services[i].service_title %></h5>
+                        <p><%= data[0].Services[i].service_desc %></p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <small><a href="#"><i class="fa fa-eye pr-1"></i>Lihat<br></a></small>
+                    </div>
                 </div>
             </div>
-        </div>
-    <% } %>
+        <% } %>
 
-</div>
+    </div>
 
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="modal-header">
-            <span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-            <form method="POST" action="/profile/add-product" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label>Categories</label>
-                    <select class="custom-select" name="category">
-                        <% for(var i = 0; i < categories.length; i++){ %>
-                            <option value="<%= categories[i].ID_category %>"><%= categories[i].category %></option>
-                        <% } %>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" name="title" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <textarea type="text" name="desc" class="form-control" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Price (Rupiah)</label>
-                    <input type="text" class="form-control" name="price" required>
-                </div>
-                <div class="form-group">
-                    <label>Photo</label>
-                    <input type="file" class="form-control" name="photo" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Add</button>
-            </form>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="/profile/add-product" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Categories</label>
+                        <select class="custom-select" name="category">
+                            <% for (var i = 0; i < categories.length; i++) { %>
+                                <option value="<%= categories[i].ID_category %>"><%= categories[i].category %></option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" name="title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" name="desc" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (Rupiah)</label>
+                        <input type="text" class="form-control" name="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Photo</label>
+                        <input type="file" class="form-control" name="photo" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+<% } else { %>
+    <div class="col-md-12 search-table-col">
+        <span class="counter pull-right"></span>
+        <div class="form-group pull-right col-lg-4">
+            <input type="text" class="search form-control" placeholder="Search by typing here..">
+        </div>
+        <div class="table-responsive table-bordered table table-hover table-bordered results">
+            <table class="table table-bordered table-hover">
+                <thead class="bill-header cs">
+                <tr>
+                    <th id="trs-hd" class="col-lg-1" style="width: 18%;">Service Name</th>
+                    <th id="trs-hd" class="col-lg-2" style="width: 18%;">Seller</th>
+                    <th id="trs-hd" class="col-lg-3" style="width: 12%;">Price</th>
+                    <th id="trs-hd" class="col-lg-2" style="width: 34%;">Note</th>
+                    <th id="trs-hd" class="col-lg-2" style="width: 18%;">Date</th>
+                    <th id="trs-hd" class="col-lg-2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="warning no-result">
+                    <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
+                </tr>
+                <% for(var i = 0; i < transact.length;i++){ %>
+                    <tr>
+                        <td><%= transact[i].Service.service_title %></td>
+                        <td style="width: 18%;"><%= transact[i].Service.User.user_name %></td>
+                        <td><%= transact[i].Service.service_price %></td>
+                        <td><%= transact[i].transaction_req %></td>
+                        <td><%= transact[i].transaction_datetime %></td>
+                        <td>
+                            <button class="btn btn-success" style="margin-left: 5px;" type="submit">
+                                <i class="fa fa-check" style="font-size: 15px;"></i>
+                            </button>
+                            <button class="btn btn-danger"
+                                    style="margin-left: 5px;margin-top: 10px;margin-right: auto;margin-bottom: auto;"
+                                    type="submit">
+                                <i class="fa fa-trash" style="font-size: 15px;"></i>
+                            </button>
+                        </td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<script src="javascripts/jquery/jquery.min.js"></script>
-<script src="javascripts/profile/image-card-materialize.js"></script>
-<script src="javascripts/boostrap/bootstrap.min.js"></script>
+<% } %>
+<script src="/javascripts/jquery/jquery.min.js"></script>
+<script src="/javascripts/profile/image-card-materialize.js"></script>
+<script src="/javascripts/boostrap/bootstrap.min.js"></script>
+<script src="/javascripts/profile/Table-With-Search.js"></script>
 <script type="text/javascript">
     const modal = document.getElementById("myModal");
 

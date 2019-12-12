@@ -25,49 +25,82 @@ const addPro = multer({storage: storage1});
 
 module.exports = function (app) {
     app.get('/profile', function (req, res) {
-        db.User.findAll({
-            where: {user_email: req.user.user_email},
-            include: [{
-                model: db.Service
-            }]
-        }).then(function (dbUser) {
-            const resObj = dbUser.map(user => {
 
-                return Object.assign({}, {
-                    user_id: user.user_id,
-                    user_email: user.user_email,
-                    user_name: user.user_name,
-                    user_phone: user.user_phone,
-                    user_address: user.user_address,
-                    user_avatar: user.user_avatar,
-                    user_role: user.user_role,
-                    Services: user.Services.map(service => {
 
-                        return Object.assign({}, {
-                            service_id: service.service_id,
-                            ID_category: service.ID_category,
-                            user_id: service.user_id,
-                            service_title: service.service_title,
-                            service_desc: service.service_desc,
-                            service_price: service.service_price,
-                            image_path: service.image_path
-                        });
-                    })
-                })
-            });
+        if (req.user.user_role != 2) {
+            db.User.findAll({
+                where: {user_email: req.user.user_email},
+                include: [{
+                    model: db.Service,
+                    include: [{
+                        model: db.Transaction
+                    }]
+                }]
+            }).then(function (dbUser) {
+                const resObj = dbUser.map(user => {
 
-            db.Category.findAll().then(dbCategory => {
-                const categories = dbCategory.map(cat => {
                     return Object.assign({}, {
-                        ID_category: cat.ID_category,
-                        category: cat.category
+                        user_id: user.user_id,
+                        user_email: user.user_email,
+                        user_name: user.user_name,
+                        user_phone: user.user_phone,
+                        user_address: user.user_address,
+                        user_avatar: user.user_avatar,
+                        user_role: user.user_role,
+                        Services: user.Services.map(service => {
+
+                            return Object.assign({}, {
+                                service_id: service.service_id,
+                                ID_category: service.ID_category,
+                                user_id: service.user_id,
+                                service_title: service.service_title,
+                                service_desc: service.service_desc,
+                                service_price: service.service_price,
+                                image_path: service.image_path,
+                                Transactions: service.Transactions.map(transaction => {
+
+                                    return Object.assign({}, {
+                                        transaction_id: transaction.transaction_id,
+                                        service_id: transaction.service_id,
+                                        user_id: transaction.user_id,
+                                        transaction_req: transaction.transaction_req,
+                                        transaction_datetime: transaction.transaction_datetime
+                                    });
+                                })
+                            });
+                        })
                     })
                 });
 
-                if (resObj && categories)
-                    res.render("profile/seller-page", {data: resObj, categories: categories})
+                db.Category.findAll().then(dbCategory => {
+                    const categories = dbCategory.map(cat => {
+                        return Object.assign({}, {
+                            ID_category: cat.ID_category,
+                            category: cat.category
+                        })
+                    });
+
+                    if (resObj && categories)
+                        res.render("profile/seller-page", {data: resObj, categories: categories})
+                    //     res.json(resObj)
+                })
             })
-        })
+        } else {
+            db.Transaction.findAll({
+                where: {user_id: req.user.user_id},
+                include: [{
+                    model: db.Service, attributes: ['service_title', 'service_price'],
+                    include: [{
+                        model: db.User, attributes: ['user_name']
+                    }]
+                }]
+            }).then(dbTransaction => {
+                res.render('profile/seller-page', {data: [req.user], transact: dbTransaction})
+                // res.json(dbTransaction)
+            });
+        }
+
+
     });
 
     // Route untuk me-logout user
@@ -130,5 +163,20 @@ module.exports = function (app) {
             console.log(err);
             res.json(err);
         });
-    })
+    });
+
+    // Route untuk melihat list transaksi dari seller
+    app.get('/profile/seller/transactions', function (req, res) {
+        db.Transaction.findAll({
+            include: [{
+                model: db.Service, attributes: ['service_title', 'service_price', 'user_id','service_id'],
+                where: {user_id: req.user.user_id},
+            }, {
+                model: db.User, attribute: ['user_name']
+            }]
+        }).then(dbTransaction => {
+            res.render('profile/seller-transactions-page', {data: [req.user], transact: dbTransaction})
+            // res.json(dbTransaction)
+        });
+    });
 };

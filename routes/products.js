@@ -3,10 +3,10 @@ const db = require("../models");
 
 module.exports = function (app) {
 
-	app.get('/products/all',function(req,res){
-		db.User.findAll({
+    app.get('/products/all', function (req, res) {
+        db.User.findAll({
             include: [{
-				model: db.Service,
+                model: db.Service,
             }]
         }).then(function (dbUser) {
             const resObj = dbUser.map(user => {
@@ -16,8 +16,8 @@ module.exports = function (app) {
                     user_email: user.user_email,
                     user_name: user.user_name,
                     user_phone: user.user_phone,
-					user_address: user.user_address,
-					user_avatar:user.user_avatar,
+                    user_address: user.user_address,
+                    user_avatar: user.user_avatar,
                     user_role: user.user_role,
                     Services: user.Services.map(service => {
 
@@ -31,19 +31,19 @@ module.exports = function (app) {
                             image_path: service.image_path
                         });
                     })
-				})
-				
-			});
-			res.render('products/list-products',{page:'list',menuId:'home',data: resObj})
-		});
-	})
+                })
 
-	app.get('/products/:categories', function (req, res, next) {
-		
-		db.User.findAll({
+            });
+            res.render('products/list-products', {sessions: req.user, page: 'list', menuId: 'home', data: resObj})
+        });
+    })
+
+    app.get('/products/:categories', function (req, res, next) {
+
+        db.User.findAll({
             include: [{
-				model: db.Service,
-				where:{ID_category: req.params.categories}
+                model: db.Service,
+                where: {ID_category: req.params.categories}
             }]
         }).then(function (dbUser) {
             const resObj = dbUser.map(user => {
@@ -53,8 +53,8 @@ module.exports = function (app) {
                     user_email: user.user_email,
                     user_name: user.user_name,
                     user_phone: user.user_phone,
-					user_address: user.user_address,
-					user_avatar:user.user_avatar,
+                    user_address: user.user_address,
+                    user_avatar: user.user_avatar,
                     user_role: user.user_role,
                     Services: user.Services.map(service => {
 
@@ -68,19 +68,19 @@ module.exports = function (app) {
                             image_path: service.image_path
                         });
                     })
-				})
-				
-			});
-			res.render('products/list-products',{page:'list',menuId:'home',data: resObj})
-		});
+                })
+
+            });
+            res.render('products/list-products', {sessions: req.user,page: 'list', menuId: 'home', data: resObj})
+        });
 
     });
 
-	app.get('/products/details/:servicesid', function (req, res, next) {
-		db.User.findAll({
+    app.get('/products/details/:servicesid', function (req, res, next) {
+        db.User.findAll({
             include: [{
-				model: db.Service,
-				where:{ID_category: req.params.servicesid}
+                model: db.Service,
+                where: {service_id: req.params.servicesid}
             }]
         }).then(function (dbUser) {
             const resObj = dbUser.map(user => {
@@ -90,8 +90,8 @@ module.exports = function (app) {
                     user_email: user.user_email,
                     user_name: user.user_name,
                     user_phone: user.user_phone,
-					user_address: user.user_address,
-					user_avatar:user.user_avatar,
+                    user_address: user.user_address,
+                    user_avatar: user.user_avatar,
                     user_role: user.user_role,
                     Services: user.Services.map(service => {
 
@@ -105,27 +105,40 @@ module.exports = function (app) {
                             image_path: service.image_path
                         });
                     })
-				})
-				
-			});
-			res.render('products/detail-products',{page:'list',menuId:'home',data: resObj, user:req.user.user_id })
-		});
-	});
+                })
 
-	app.post('/products/transaction', function(req,res){
-		var today = new Date();
-		var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-		var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-		db.Transaction.create({
-			user_id: req.body.user_id,
-			service_id:req.body.service_id,
-			transaction_req:req.body.req,
-			transaction_datetime: date+' '+time
-		}).then(function(){
-			res.redirect(307,'/login/login-now');
-		}).catch(err=>{
-			console.log(err)
-			res.json(err)
-		})
-	})
-}
+            });
+            res.render('products/detail-products', {page: 'list', menuId: 'home', data: resObj, user: req.user.user_id, sessions: req.user})
+            // res.json(resObj)
+        });
+    });
+
+    app.post('/products/transaction', function (req, res) {
+        var today = new Date();
+        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        db.Transaction.create({
+            user_id: req.body.user_id,
+            service_id: req.body.service_id,
+            transaction_req: req.body.req,
+            transaction_datetime: date + ' ' + time
+        }).then(function () {
+            res.redirect(307, '/login/login-now');
+        }).catch(err => {
+            console.log(err);
+            res.json(err);
+        });
+    });
+
+    app.get('/products/delete/:service_id', function (req, res) {
+        db.Transaction.destroy({
+            where: {service_id: req.params.service_id}
+        }).then(function () {
+            db.Service.destroy({
+                where: {service_id: req.params.service_id}
+            }).then(function () {
+                res.end("DONE");
+            });
+        });
+    });
+};

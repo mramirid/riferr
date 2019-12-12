@@ -11,43 +11,56 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <% if(menuId == 'home') { %>
-        <!-- Navbar Item for home -->
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item" id="home">
-                    <a class="nav-link" href="/signup/1">Become Seller</a>
-                </li>
-                <li class="nav-item" id="sign-in">
-                    <a class="nav-link" href="/login">Sign In</a>
-                </li>
-                <li class="nav-item" id="join">
-                    <a class="btn btn-outline-primary" href="/signup/2">Join</a>
-                </li>
-            </ul>
-        </div>
+    <% if (!sessions) {
+        if(menuId == 'home') { %>
+            <!-- Navbar Item for home -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" id="home">
+                        <a class="nav-link" href="/signup/1">Become Seller</a>
+                    </li>
+                    <li class="nav-item" id="sign-in">
+                        <a class="nav-link" href="/login">Sign In</a>
+                    </li>
+                    <li class="nav-item" id="join">
+                        <a class="btn btn-outline-primary" href="/signup/2">Join</a>
+                    </li>
+                </ul>
+            </div>
+        <% } else { %>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav ml-auto">
+
+                    <li class="mr-3">
+                        <!-- <a class="nav-link" href="/">Become Seller</a> -->
+                        <select class="custom-select custom-select-lg">
+                            <option>select 1</option>
+                            <option>select 2</option>
+                            <option>select 3</option>
+                        </select>
+
+                    </li>
+
+                    <li>
+                        <select class="custom-select custom-select-lg">
+                            <option>select 1</option>
+                            <option>select 2</option>
+                            <option>select 3</option>
+                        </select>
+                    </li>
+
+                </ul>
+            </div>
+        <% } %>
     <% } else { %>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav ml-auto">
-
-                <li class="mr-3">
-                    <!-- <a class="nav-link" href="/">Become Seller</a> -->
-                    <select class="custom-select custom-select-lg">
-                        <option>select 1</option>
-                        <option>select 2</option>
-                        <option>select 3</option>
-                    </select>
-
+                <li class="nav-item" id="home">
+                    <a class="nav-link" href="/profile"><%= sessions.user_name %></a>
                 </li>
-
-                <li>
-                    <select class="custom-select custom-select-lg">
-                        <option>select 1</option>
-                        <option>select 2</option>
-                        <option>select 3</option>
-                    </select>
+                <li class="nav-item" id="sign-in">
+                    <a class="nav-link" href="/profile/logout">Logout</a>
                 </li>
-
             </ul>
         </div>
     <% } %>
