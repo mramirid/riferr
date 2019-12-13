@@ -12,7 +12,7 @@ Proyek akhir mata kuliah Pemrograman Web
 </p>
 <br>
 
-## Contributors
+## Kontributor
 - Amir Muhammad Hakim (17081010051)
 - Fajar Andhika Putra (17081010054)
 - Kholilul Rachman N.M (17081010055)
@@ -20,4 +20,14 @@ Proyek akhir mata kuliah Pemrograman Web
 - Rahayu Prabawati Amaliyah (17081010058)
 
 ## Tools
-Using HTML, CSS, JavaScript for the Front-End. NodeJS for the Back-End. Mysql for the database
+| Bagian | Tool(s) yang digunakan |
+| --- | --- |
+| Font-End | HTML, CSS, JavaScript |
+| Back-End | NodeJS |
+| Database | MySQL |
+
+## Cara Menjalankan
+- Install NodeJS
+- Buka folder project di Command-line & input command 'npm install' (untuk menginstall packages yang diperlukan pada project ini)
+- Input command 'nodemon start' (untuk menjalankan server)
+- Buka 'localhost:3000' di browser
