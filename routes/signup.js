@@ -1,7 +1,7 @@
 const db = require('../models');
 
 module.exports = function (app) {
-    // Register seller page
+    // Register page
     app.get('/signup/:role', function (req, res) {
         if (req.user) {
             res.redirect('/products/all');

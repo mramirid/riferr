@@ -81,7 +81,7 @@ module.exports = function (app) {
                     });
 
                     if (resObj && categories)
-                        res.render("profile/seller-page", {data: resObj, categories: categories})
+                        res.render("profile/profile-page", {data: resObj, categories: categories})
                     //     res.json(resObj)
                 })
             })
@@ -95,7 +95,7 @@ module.exports = function (app) {
                     }]
                 }]
             }).then(dbTransaction => {
-                res.render('profile/seller-page', {data: [req.user], transact: dbTransaction})
+                res.render('profile/profile-page', {data: [req.user], transact: dbTransaction})
                 // res.json(dbTransaction)
             });
         }
