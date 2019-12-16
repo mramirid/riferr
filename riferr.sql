@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2019 at 02:13 PM
+-- Generation Time: Dec 16, 2019 at 08:28 AM
 -- Server version: 10.1.40-MariaDB
 -- PHP Version: 7.3.5
 
@@ -38,10 +38,10 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`ID_category`, `category`) VALUES
-(1, 'cat1'),
-(2, 'cat2'),
-(3, 'cat3'),
-(4, 'cat4');
+(1, 'desain_web'),
+(2, 'desain_baju'),
+(3, 'printing'),
+(4, 'desain_logo');
 
 -- --------------------------------------------------------
 
@@ -64,18 +64,29 @@ CREATE TABLE `services` (
 --
 
 INSERT INTO `services` (`service_id`, `ID_category`, `user_id`, `service_title`, `service_desc`, `service_price`, `image_path`) VALUES
-(1, 1, 2, 'a modern design', 'i will design a modern design for your company', 12000, 'kholel.jpg,kholel 2.png'),
-(2, 1, 2, '2 modern design', 'i will design 2 modern logo or design for your business', 24000, 'kholel.jpg,kholel 2.png'),
-(3, 2, 3, '3 modern design', 'i will design 3 modern logo or design for your business', 36000, 'kholel.jpg,kholel 2.png'),
-(4, 2, 2, '4 modern design', 'i will design 4 modern logo or design for your business', 48000, 'kholel.jpg,kholel 2.png'),
-(5, 2, 3, '5 modern design', 'i will design 5 modern logo or design for your business', 60000, 'kholel.jpg,kholel 2.png'),
-(6, 3, 3, 'an abstract picture', 'i will edit your photo become abstact', 5000, 'kholel.jpg,kholel 2.png'),
-(7, 3, 3, '2 abstract picture', 'i will edit your photo become 2 abstract picture', 10000, 'kholel.jpg,kholel 2.png'),
-(8, 4, 2, 'an invitation card', 'i will design an invitation card for your party', 2000, 'kholel.jpg,kholel 2.png'),
-(9, 4, 3, 'modern invitation card design', 'i will design an invitation card with modern style for your party', 4000, 'kholel.jpg,kholel 2.png'),
-(10, 4, 6, 'abc', 'abc', 1234, 'abc.jpg'),
-(11, 2, 6, 'iop', 'iop', 890, 'iop.jpg'),
-(12, 4, 6, 'jkl', 'jkl', 1234, 'jkl');
+(13, 2, 8, 'Sketsa Desain', 'Merancang desain baju dan kaos ', 200000, 'photo1576095814977.jpg'),
+(14, 2, 8, 'Desain PDH', 'Warna bisa disesuaikan, inshaallah hasil sesuai yang diharapkan.', 150000, 'photo1576096096924.jpg'),
+(15, 2, 8, 'Desain Kaos', 'Mendesain gambar atau logo khususnya untuk disablon.', 250000, 'photo1576096269235.jpg'),
+(16, 1, 9, 'Photography Website', 'Website bersifat statis dan bisa bersifat pribadi.\r\nTampilan web bisa disesuaikan.', 400000, 'photo1576096981896.jpg'),
+(18, 4, 9, 'Logo Kemasan', 'Desain logo untuk aneka makanan yang akan diproduksi. Keren dan Menarik.', 100000, 'photo1576097650080.jpg'),
+(19, 3, 10, 'Undangan Pernikahan', 'Undangan dengan gaya unik dan keren. Warna bisa disesuaikan dengan selera.', 500000, 'photo1576098056432.jpg'),
+(20, 1, 10, 'Desain Pamflet', 'Pamflet khusus acara apa saja. Desainnya pasti memuaskan.', 350000, 'photo1576098155018.jpg'),
+(21, 3, 10, 'Desain Majalah', 'Dapat mendesain semua majalah dalam banyak konsep.', 300000, 'photo1576098310814.jpg'),
+(22, 3, 11, 'Undangan Pernikahan', 'Undangan dengan bermacam tema, bisa request. Dan Prosesnya tidak terlalu lama.', 240000, 'photo1576098802865.jpg'),
+(23, 4, 11, 'Desain Logo', 'Mendesain logo yang menarik dan keren. Bisa untuk logo apa saja.', 320000, 'photo1576098953497.jpg'),
+(24, 3, 11, 'Undangan party', 'Undangan untuk pesta ulang tahun atau untuk syukuran, dll.', 150000, 'photo1576099124221.jpg'),
+(25, 1, 12, 'Travel Website', 'Website dinamis dimana, user friendly. Pokoknya cakeeppp.', 600000, 'photo1576099606210.jpg'),
+(26, 1, 12, 'Blogger', 'Website tempat berbagi informasi dan bisa bersifat peribadi. one page.', 360000, 'photo1576099709553.jpg'),
+(27, 4, 12, 'Logo Maker', 'Logo sesuai permintaan, Hasil dipastikan memuaskan.', 250000, 'photo1576099822315.jpg'),
+(28, 1, 13, 'Website Profile', 'Website bisa berisi suatu informasi tentang desa, perusahaan, atau data diri.', 400000, 'photo1576100505556.jpg'),
+(29, 1, 13, 'E-commerce', 'Website dengan tema produk yang akan dijual, dan lebih spesifik.', 700000, 'photo1576100662788.jpg'),
+(30, 3, 13, 'Bookyet', 'desain halaman seperti majalah', 650000, 'photo1576100785283.jpg'),
+(31, 3, 13, 'Poster', 'desain segala bentuk poster', 270000, 'photo1576101714655.jpg'),
+(32, 4, 11, 'Logo Laundry', 'Logo dengan tema laundry, khusus buat jasa laundry. Didesain dengan sangat menarik.', 320000, 'photo1576101952181.jpg'),
+(33, 4, 11, 'Logo Minuman', 'Logo dengan tema minuman, khusus untuk bisnis bidang minuman.', 250000, 'photo1576102052625.jpg'),
+(34, 1, 9, 'One Page', 'Website denhan tampilan sederhana namun menarik. ', 380000, 'photo1576102269555.jpg'),
+(36, 3, 9, 'Wallpaper', 'Wallpaper', 1000, 'photo1576127370959.jpg'),
+(37, 1, 15, 'Simple Web App', 'descripsi agak pendek', 100000, 'photo1576132779173.jpg');
 
 -- --------------------------------------------------------
 
@@ -90,14 +101,6 @@ CREATE TABLE `transactions` (
   `transaction_req` text NOT NULL,
   `transaction_datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`transaction_id`, `service_id`, `user_id`, `transaction_req`, `transaction_datetime`) VALUES
-(2, 2, 2, '2', '2019-12-10 00:00:00'),
-(3, 2, 2, '2', '2019-12-10 11:39:01');
 
 -- --------------------------------------------------------
 
@@ -126,7 +129,17 @@ INSERT INTO `users` (`user_id`, `user_email`, `user_password`, `user_name`, `use
 (3, 'seller2@seller2.com', 'seller2', 'seller 2 coy', '098098', 'jalan-in aja 2', 'default_avatar.jpg', 1),
 (4, 'buyer1@buyer.com', 'buyer1', 'buyer 1 boy', '098098', 'jalan-in aza 1', 'default_avatar.jpg', 2),
 (5, 'buyer2@buyer.com', 'buyer2', 'buyer 2 boy', '0980900', 'jalan-in aza 2', 'default_avatar.jpg', 2),
-(6, 'amir.rhythm@gmail.com', '$2a$10$iiZ0drxksQq0n1W0t7dHse1UFRGcq5kPJcpv76dyjxMQrXpaodvsK', 'name', '087855777360', 'Kamaku 1/38-A', 'default_avatar.jpg', 2);
+(6, 'amir.rhythm@gmail.com', '$2a$10$iiZ0drxksQq0n1W0t7dHse1UFRGcq5kPJcpv76dyjxMQrXpaodvsK', 'name', '087855777360', 'Kamaku 1/38-A', 'default_avatar.jpg', 2),
+(7, 'ameliarahayu964@gmail.com', '$2a$10$xXQ7mEDEpTqRtY39E9KOoOw6iBbb54FIOEjkpWNdq7VPhrNLMYqw.', 'Rahayu Amaliyah', '082132368096', 'jl. medokan asri bar. IX N-25', 'default_avatar.jpg', 2),
+(8, 'claraputri123@gmail.com', '$2a$10$7.AfiWW2gs/g3Q/6vG6sQu6kVZZ2jwq.mCkvgWPL1i4/aceRGfEJy', 'Clara Putri', '082336757999', 'Jl. Gn. Anyar Emas No.16', 'default_avatar.jpg', 1),
+(9, 'dimasputra@gmail.com', '$2a$10$7fU6CifeMYuuNK1XAAhz2.zaYApVBvFx/UyebrjRAZnMFLpcSvus.', 'Dimas Satria Putra', '082778456399', 'Jl. Baluran Kidul No. 22', 'avatarFile1576127857291.jpg', 1),
+(10, 'dion.cool@gmail.com', '$2a$10$nuOJaU0AHrZgigepuulNh.baD7FS7mRD3eKpZMlKsTMbeA2TjzakC', 'Moh. Dion Syahputra', '082667455244', 'Jl. Plampitan VIII No. 7', 'default_avatar.jpg', 1),
+(11, 'tasha.mey22@gmail.com', '$2a$10$0a2/PEaMH.eRMhrjU2enxO43WxSq1eTv3i7YNWsMqhOy9PkieqsIC', 'Meylin Anatasha', '087157447257', 'Jl. Banyu Urip Lor 3C / 11 Surabaya', 'default_avatar.jpg', 1),
+(12, 'adit_smile@gmail.com', '$2a$10$g9wkv86mcnTnR/4h0NEwbeVpnHkRvTQbWSkx4yhwkS4FhPGuzNvmC', 'Raymond Praditya', '082335799245', 'Jl. Gunung Anyar Jaya No. 55', 'default_avatar.jpg', 1),
+(13, 'rafaelbon@gmail.com', '$2a$10$dTb0qQWX1A9epyMvWDtAku8opzl19CjizqV5TIL9RueP/c8YDEM5m', 'Rafael Bonet', '085325665175', 'Jalan Karang Menur I No. 2, Surabaya.', 'avatarFile1576101572783.jpg', 1),
+(14, 'amir.mramirid@gmail.com', '$2a$10$AQwRrg6op0jf558w4Z5kquaPhWnJICNbjjuxmPDUCCpI/FYgz5uWK', 'Amir Hakim', '087855777360', 'Kamaku 1/38-A', 'avatarFile1576124798074.jpg', 1),
+(15, 'kol@kol.com', '$2a$10$fNAhueMn7asPqgvDn9qdiOIbGwEnbcEq9yetqbLSea/trRyJwMHxi', 'kolel', '087855777360', 'Kamaku 1/38-A', 'avatarFile1576132934935.jpg', 1),
+(16, 'amir@amir.com', '$2a$10$XbWwbpkx.EZHa.ntUS10ZOYZmss.Adb/Ti4Lm4jaUuFGZF4mLbi0e', 'Amir Hakim', '087855777360', 'Kamaku 1/38-A', 'default_avatar.jpg', 2);
 
 --
 -- Indexes for dumped tables
@@ -174,19 +187,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
