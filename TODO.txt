@@ -1,5 +1,0 @@
-TODO:
-- profile seller
-- add product
-- profile buyer
-- browse product
