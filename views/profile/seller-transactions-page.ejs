@@ -2,135 +2,137 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Profile</title>
-    <link rel="stylesheet" href="/fonts/Acme.css">
-    <link rel="stylesheet" href="/fonts/Chewy.css">
-    <link rel="stylesheet" href="/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="/stylesheets/profile/Block-Responsive-Item-List.css">
-    <link rel="stylesheet" href="/stylesheets/profile/image-card-materialize-1.css">
-    <link rel="stylesheet" href="/stylesheets/profile/image-card-materialize.css">
-    <link rel="stylesheet" href="/stylesheets/bootstrap/4.3.1/bootstrap.min.css">
-    <link rel="stylesheet" href="/stylesheets/profile/Navigation-Profile.css">
-    <link rel="stylesheet" href="/stylesheets/profile/styles.css">
-    <link rel="stylesheet" href="/stylesheets/profile/Profile-Card.css">
-    <link rel="stylesheet" href="/stylesheets/profile/Social-Icons.css">
-    <link rel="stylesheet" href="/stylesheets/profile/Table-With-Search-1.css">
-    <link rel="stylesheet" href="/stylesheets/profile/Table-With-Search.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<title>Profile</title>
+	<link rel="stylesheet" href="/fonts/Acme.css">
+	<link rel="stylesheet" href="/fonts/Chewy.css">
+	<link rel="stylesheet" href="/fonts/font-awesome.min.css">
+	<link rel="stylesheet" href="/fonts/ionicons.min.css">
+	<link rel="stylesheet" href="/stylesheets/profile/Block-Responsive-Item-List.css">
+	<link rel="stylesheet" href="/stylesheets/profile/image-card-materialize-1.css">
+	<link rel="stylesheet" href="/stylesheets/profile/image-card-materialize.css">
+	<link rel="stylesheet" href="/stylesheets/bootstrap/4.3.1/bootstrap.min.css">
+	<link rel="stylesheet" href="/stylesheets/profile/Navigation-Profile.css">
+	<link rel="stylesheet" href="/stylesheets/profile/styles.css">
+	<link rel="stylesheet" href="/stylesheets/profile/Profile-Card.css">
+	<link rel="stylesheet" href="/stylesheets/profile/Social-Icons.css">
+	<link rel="stylesheet" href="/stylesheets/profile/Table-With-Search-1.css">
+	<link rel="stylesheet" href="/stylesheets/profile/Table-With-Search.css">
 </head>
 
 <body style="font-family: Chewy, cursive;">
+	<nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+		<div class="container">
+			<a class="navbar-brand" href="/" style="font-family: Chewy, cursive; font-size: 32px;">Riferr</a>
+			<button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<ul class="nav navbar-nav mr-auto"></ul>
+				<span class="navbar-text actions">
+					<a class="login" href="/profile"
+						style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
+				</span>
+				<span class="navbar-text actions">
+					<a class="login" href="/profile/settings-page"
+						style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
+				</span>
+				<span class="navbar-text actions">
+					<a class="login" href="/profile/logout" style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
+				</span>
+			</div>
+		</div>
+	</nav>
 
-<nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
-    <div class="container">
-        <a class="navbar-brand" href="/" style="font-family: Chewy, cursive; font-size: 32px;">Riferr</a>
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-            <ul class="nav navbar-nav mr-auto"></ul>
-            <span class="navbar-text actions">
-                <a class="login" href="/profile"
-                   style="font-size: 18px;font-family: Acme, sans-serif;"><%= data[0].user_name %></a>
-            </span>
-            <span class="navbar-text actions">
-                <a class="login" href="/profile/settings-page"
-                   style="font-size: 18px;font-family: Acme, sans-serif;">Settings</a>
-            </span>
-            <span class="navbar-text actions">
-                <a class="login" href="/profile/logout"
-                   style="font-size: 18px;font-family: Acme, sans-serif;">Log-out</a>
-            </span>
-        </div>
-    </div>
-</nav>
+	<div class="profile-card">
+		<div class="profile-back" style="background-color: #ff5331;"></div>
+		<img class="rounded-circle profile-pic" src="/uploads/avatars/<%= data[0].user_avatar %>">
+		<h3 class="profile-name" style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;">
+			<%= data[0].user_name %>
+		</h3>
+		<p class="profile-bio" style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;">
+			<%= data[0].user_email %>
+		</p>
+	</div>
 
-<div class="profile-card">
-    <div class="profile-back" style="background-color: #ff5331;"></div>
-    <img class="rounded-circle profile-pic" src="/uploads/avatars/<%= data[0].user_avatar %>">
-    <h3 class="profile-name"
-        style="background-color: #ff5331;font-size: 20px;font-family: Acme, sans-serif;"><%= data[0].user_name %></h3>
-    <p class="profile-bio"
-       style="font-size: 20px;font-family: Acme, sans-serif;margin-bottom: 30px;"><%= data[0].user_email %></p>
-</div>
-
-<div class="col-md-12 search-table-col">
-    <span class="counter pull-right"></span>
-    <div class="form-group pull-right col-lg-4">
-        <input type="text" class="search form-control" placeholder="Search by typing here..">
-    </div>
-    <div class="table-responsive table-bordered table table-hover table-bordered results">
-        <table class="table table-bordered table-hover">
-            <thead class="bill-header cs">
-            <tr>
-                <th id="trs-hd" class="col-lg-1" style="width: 18%;">Service Name</th>
-                <th id="trs-hd" class="col-lg-2" style="width: 18%;">Buyer</th>
-                <th id="trs-hd" class="col-lg-3" style="width: 12%;">Price</th>
-                <th id="trs-hd" class="col-lg-2" style="width: 34%;">Note</th>
-                <th id="trs-hd" class="col-lg-2" style="width: 18%;">Date</th>
-                <th id="trs-hd" class="col-lg-2">Action</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="warning no-result">
-                <td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
-            </tr>
-            <% for(var i = 0; i < transact.length;i++){ %>
-                <tr>
-                    <td><%= transact[i].Service.service_title %></td>
-                    <td style="width: 18%;"><%= transact[i].User.user_name %></td>
-                    <td><%= transact[i].Service.service_price %></td>
-                    <td><%= transact[i].transaction_req %></td>
-                    <td><%= transact[i].transaction_datetime %></td>
-                    <td>
-                        <button class="btn btn-success" style="margin-left: 5px;" type="submit">
-                            <a class="fa fa-check" style="font-size: 15px;" href="/products/delete/<%= transact[i].transaction_id %>"></a>
-                        </button>
-                        <button class="btn btn-danger"
-                                style="margin-left: 5px;margin-top: 10px;margin-right: auto;margin-bottom: auto;"
-                                type="submit">
-                            <a class="fa fa-trash" style="font-size: 15px;" href="/products/delete/<%= transact[i].transaction_id %>"></a>
-                        </button>
-                    </td>
-                </tr>
-            <% } %>
-            </tbody>
-        </table>
-    </div>
-</div>
+	<div class="col-md-12 search-table-col">
+		<span class="counter pull-right"></span>
+		<div class="form-group pull-right col-lg-4">
+			<input type="text" class="search form-control" placeholder="Search by typing here..">
+		</div>
+		<div class="table-responsive table-bordered table table-hover table-bordered results">
+			<table class="table table-bordered table-hover">
+				<thead class="bill-header cs">
+					<tr>
+						<th id="trs-hd" class="col-lg-1" style="width: 18%;">Service Name</th>
+						<th id="trs-hd" class="col-lg-2" style="width: 18%;">Buyer</th>
+						<th id="trs-hd" class="col-lg-3" style="width: 12%;">Price</th>
+						<th id="trs-hd" class="col-lg-2" style="width: 34%;">Note</th>
+						<th id="trs-hd" class="col-lg-2" style="width: 18%;">Date</th>
+						<th id="trs-hd" class="col-lg-2">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="warning no-result">
+						<td colspan="12"><i class="fa fa-warning"></i>&nbsp; No Result !!!</td>
+					</tr>
+					<% for(var i = 0; i < transact.length;i++){ %>
+					<tr>
+						<td><%= transact[i].Service.service_title %></td>
+						<td style="width: 18%;"><%= transact[i].User.user_name %></td>
+						<td><%= transact[i].Service.service_price %></td>
+						<td><%= transact[i].transaction_req %></td>
+						<td><%= transact[i].transaction_datetime %></td>
+						<td>
+							<button class="btn btn-success" style="margin-left: 5px;" type="submit">
+								<a class="fa fa-check" style="font-size: 15px;"
+									href="/products/delete/<%= transact[i].transaction_id %>"></a>
+							</button>
+							<button class="btn btn-danger"
+								style="margin-left: 5px;margin-top: 10px;margin-right: auto;margin-bottom: auto;" type="submit">
+								<a class="fa fa-trash" style="font-size: 15px;"
+									href="/products/delete/<%= transact[i].transaction_id %>"></a>
+							</button>
+						</td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
 
 <script src="/javascripts/jquery/jquery.min.js"></script>
 <script src="/javascripts/profile/image-card-materialize.js"></script>
 <script src="/javascripts/boostrap/bootstrap.min.js"></script>
 <script src="/javascripts/profile/Table-With-Search.js"></script>
 <script type="text/javascript">
-    const modal = document.getElementById("myModal");
+	const modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
-    const btn = document.getElementById("myBtn");
+	// Get the button that opens the modal
+	const btn = document.getElementById("myBtn");
 
-    // Get the <span> element that closes the modal
-    const span = document.getElementsByClassName("close")[0];
+	// Get the <span> element that closes the modal
+	const span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-    }
+	// When the user clicks the button, open the modal
+	btn.onclick = function () {
+		modal.style.display = "block";
+	}
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function () {
+		modal.style.display = "none";
+	}
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = "none";
+		}
+	}
 </script>
-</body>
 
 </html>

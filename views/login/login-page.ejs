@@ -1,62 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta name="author" content="W | K - Project Sangar"/>
-    <title>Login Form</title>
+	<meta charset="utf-8">
+	<meta name="author" content="W | K - Project Sangar" />
+	<title>Login Form</title>
 
-    <link href="/stylesheets/auth/login_style.css" rel="stylesheet">
-    <link href="/fonts/font-awesome.min.css" rel="stylesheet">
+	<link href="/stylesheets/auth/login_style.css" rel="stylesheet">
+	<link href="/fonts/font-awesome.min.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="#"/>
+	<link rel="shortcut icon" href="#" />
 </head>
+
 <body>
-<div id="particles-js">
+	<div id="particles-js">
+		<div class="container">
+			<div class="logo" style="background-image: url('/images/Admin.png');"></div>
+			<!-- Login -->
+			<div class="login">
+				<h1>Welcome</h1>
+				<form class="form login" method="post"><br>
+					<p class="field">
+						<input type="text" name="u_adm" placeholder="Email" id="email-input" required />
+						<i class="fa fa-user"></i>
+					</p>
+					<p class="field">
+						<input type="password" name="p_adm" placeholder="Password" id="password-input" required />
+						<i class="fa fa-lock"></i>
+					</p>
+					<p class="submit"><input type="submit" name="commit" value="Login"></p>
+					<p class="forgot">
+						<a href="#">Forgot Password?</a>
+					</p>
+				</form>
+			</div>
 
-    <div class="container">
-        <div class="logo" style="background-image: url('/images/Admin.png');"></div>
+			<div class="copyright">
+				<p>
+					Copyright &copy;
+					<script type="text/javascript">
+						document.write(new Date().getFullYear());
+					</script>
+					,
+					<a style="color: gold" href="" target="_blank"> Riferr </a>
+				</p>
+			</div>
+		</div>
+	</div>
+</body>
 
-        <!-- Login -->
-        <div class="login">
-            <h1>Welcome</h1>
-
-            <form class="form login" method="post"><br>
-                <p class="field">
-                    <input type="text" name="u_adm" placeholder="Email" id="email-input" required/>
-                    <i class="fa fa-user"></i>
-                </p>
-
-                <p class="field">
-                    <input type="password" name="p_adm" placeholder="Password" id="password-input" required/>
-                    <i class="fa fa-lock"></i>
-                </p>
-
-                <p class="submit"><input type="submit" name="commit" value="Login"></p>
-
-                <p class="forgot">
-                    <a href="#">Forgot Password?</a>
-                </p>
-
-            </form>
-        </div>
-
-        <div class="copyright">
-            <p>
-                Copyright &copy;
-                <script type="text/javascript">
-                    document.write(new Date().getFullYear());
-                </script>
-                ,
-                <a style="color: gold" href="" target="_blank"> Riferr </a>
-            </p>
-        </div>
-    </div>
-</div>
 <!-- scripts -->
 <script src="javascripts/jquery/jquery.min.js"></script>
 <script src="javascripts/auth/particles.js"></script>
 <script src="javascripts/auth/app.js"></script>
 <script src="javascripts/auth/login-page.js"></script>
-</body>
 
 </html>
