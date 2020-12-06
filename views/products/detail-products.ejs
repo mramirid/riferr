@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<% include ../partials/head %>
 </head>
+
 <body>
 	<% include ../partials/menu %>
+
 	<div class="container-fluid" style="margin-top: 60px;">
 		<div class="detail-page row border-top border-bottom p-2">
 			<div class="col-md-12">
@@ -17,17 +20,20 @@
 			<div class="col-md-8">
 				<div class="carousel-section m-auto">
 					<div id="detail-carousel" data-interval="false" class="carousel slide" data-ride="carousel">
-					  <div class="carousel-inner">
-					    <div class="carousel-item active">
-					      <img class="d-block w-100" src="/uploads/services/<%= data[0].Services[0].image_path %>" alt="First slide">
-					    </div>
-					</div>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img class="d-block w-100" src="/uploads/services/<%= data[0].Services[0].image_path %>"
+									alt="First slide">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="card border-success mb-3 detail-desc">
-  					<div class="card-header"><h3>About The Gig</h3></div>
+					<div class="card-header">
+						<h3>About The Gig</h3>
+					</div>
 					<div class="card-body text-primary">
 						<p> <%= data[0].Services[0].service_desc %> </p>
 					</div>
@@ -39,24 +45,28 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
+
 	<% include ../partials/footer %>
+
 </body>
+
 <% include ../partials/script %>
+
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('#buyreq').hide();
-		$('#buy').click(function(){
+		$('#buy').click(function () {
 			$('.card-header').html("<h3>Tell seller what you want</h3>")
-			$('.card-body').html('<div><form id="form1" action="/products/transaction" method="POST">'+
-					'<textarea name="req" type="text" cols="40" rows="10"></textarea>'+
-					'<input type="text" name="service_id" hidden value="<%= data[0].Services[0].service_id %>">'+
-					'<input type="text" name="user_id" hidden value="<%= user %>">'+
+			$('.card-body').html('<div><form id="form1" action="/products/transaction" method="POST">' +
+				'<textarea name="req" type="text" cols="40" rows="10"></textarea>' +
+				'<input type="text" name="service_id" hidden value="<%= data[0].Services[0].service_id %>">' +
+				'<input type="text" name="user_id" hidden value="<%= user %>">' +
 				'</form></div>');
 			$('#buyreq').show();
 			$('#buy').hide();
 		});
 	});
 </script>
+
 </html>

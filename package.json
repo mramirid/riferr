@@ -4,19 +4,28 @@
 	"description": "Final Project MK PemWeb",
 	"main": "server.js",
 	"author": "Amir-Fajar-Kholil-Rahayu-Boy",
-	"license": "ISC",
+	"license": "MIT",
 	"repository": "https://github.com/mramirid/Riferr.git",
+	"scripts": {
+		"start": "node server.js",
+		"dev": "nodemon server.js"
+	},
 	"dependencies": {
 		"bcryptjs": "^2.4.3",
 		"ejs": "~2.6.1",
-		"express": "^4.16.4",
-		"express-session": "^1.17.0",
+		"express": "^4.17.1",
+		"express-session": "^1.17.1",
 		"multer": "^1.4.2",
-		"mysql": "^2.17.1",
-		"mysql2": "^2.0.2",
-		"nodemon": "^2.0.1",
-		"passport": "^0.4.0",
+		"mysql": "^2.18.1",
+		"mysql2": "^2.2.5",
+		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
-		"sequelize": "^5.21.2"
+		"sequelize": "^5.22.3"
+	},
+	"devDependencies": {
+		"eslint": "^7.15.0",
+		"eslint-config-airbnb-base": "^14.2.1",
+		"eslint-plugin-import": "^2.22.1",
+		"nodemon": "^2.0.6"
 	}
 }
