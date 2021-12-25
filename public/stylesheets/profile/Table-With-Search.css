@@ -15,7 +15,7 @@
 }
 
 .bill-header.cs {
-  background-color: rgba(37,71,106,0.56);
+  background-color: rgba(37, 71, 106, 0.56);
   color: #fff;
 }
 
@@ -24,11 +24,13 @@
   color: #ccc;
 }
 
-.results tr[visible='false'], .no-result {
+.results tr[visible='false'],
+.no-result {
   display: none;
 }
 
-.results tr[visible='false'], .no-result {
+.results tr[visible='false'],
+.no-result {
   display: none;
 }
 
@@ -53,4 +55,3 @@
 .search-table-col {
   margin-top: 10px;
 }
-

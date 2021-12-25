@@ -1,6 +1,10 @@
 module.exports = (app) => {
-  /* GET home page. */
+  /** GET home page. */
   app.get('/', (req, res) => {
-    res.render('homepage/homepage', { sessions: req.user, page: 'Home', menuId: 'home' });
+    res.render('homepage/homepage', {
+      sessions: req.user,
+      page: 'Home',
+      menuId: 'home',
+    });
   });
 };

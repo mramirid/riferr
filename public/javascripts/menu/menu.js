@@ -1,8 +1,8 @@
-$(document).ready(function(){
-    var element = $('meta[name="active-menu"]').attr('content');
-    $('#' + element).addClass('active');
+$(document).ready(function () {
+  const element = $('meta[name="active-menu"]').attr('content');
+  $('#' + element).addClass('active');
 
-    $(window).scroll(function(){
-    	$('nav').toggleClass('scrolled', $(this).scrollTop() > 10);
-    });
+  $(window).scroll(function () {
+    $('nav').toggleClass('scrolled', $(this).scrollTop() > 10);
+  });
 });

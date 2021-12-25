@@ -6,45 +6,39 @@
 	<meta name="author" content="W | K - Project Sangar" />
 	<title>Login Form</title>
 
-	<link href="/stylesheets/auth/login_style.css" rel="stylesheet">
+	<link href="/stylesheets/auth/style.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<link rel="shortcut icon" href="#" />
 </head>
 
-<body>
-	<div id="particles-js">
-		<div class="container">
-			<div class="logo" style="background-image: url('/images/Admin.png');"></div>
-			<!-- Login -->
-			<div class="login">
-				<h1>Welcome</h1>
-				<form class="form login" method="post"><br>
-					<p class="field">
-						<input type="text" name="u_adm" placeholder="Email" id="email-input" required />
-						<i class="fa fa-user"></i>
-					</p>
-					<p class="field">
-						<input type="password" name="p_adm" placeholder="Password" id="password-input" required />
-						<i class="fa fa-lock"></i>
-					</p>
-					<p class="submit"><input type="submit" name="commit" value="Login"></p>
-					<p class="forgot">
-						<a href="#">Forgot Password?</a>
-					</p>
-				</form>
-			</div>
-
-			<div class="copyright">
-				<p>
-					Copyright &copy;
-					<script type="text/javascript">
-						document.write(new Date().getFullYear());
-					</script>
-					,
-					<a style="color: gold" href="" target="_blank"> Riferr </a>
+<body id="particles-js">
+	<div class="container">
+		<div class="logo" style="background-image: url('/images/Admin.png');"></div>
+		<!-- Login -->
+		<div class="auth">
+			<h1>Welcome</h1>
+			<form class="form auth" method="post"><br>
+				<p class="field">
+					<input type="text" name="u_adm" placeholder="Email" id="email-input" required />
+					<i class="fa fa-user"></i>
 				</p>
-			</div>
+				<p class="field">
+					<input type="password" name="p_adm" placeholder="Password" id="password-input" required />
+					<i class="fa fa-lock"></i>
+				</p>
+				<p class="submit"><input type="submit" name="commit" value="Login"></p>
+			</form>
+			<p class="forgot">
+				<a href="#">Forgot Password?</a>
+			</p>
+			<br>
+		</div>
+		<div class="copyright">
+			<p>
+				Copyright &copy; 2019,
+				<a style="color: gold" href="/"> Riferr</a>
+			</p>
 		</div>
 	</div>
 </body>

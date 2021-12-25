@@ -52,8 +52,11 @@ module.exports = (sequelize, DataTypes) => {
 
   // Sebelum user dibuat, hash dulu passwordnya
   User.beforeCreate((user) => {
-    // eslint-disable-next-line no-param-reassign
-    user.user_password = bcrypt.hashSync(user.user_password, bcrypt.genSaltSync(10), null);
+    user.user_password = bcrypt.hashSync(
+      user.user_password,
+      bcrypt.genSaltSync(10),
+      null,
+    );
   });
 
   return User;

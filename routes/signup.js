@@ -1,7 +1,7 @@
 const db = require('../models');
 
 module.exports = (app) => {
-  // Register page
+  /** Register page */
   app.get('/signup/:role', (req, res) => {
     if (req.user) {
       res.redirect('/products/all');
@@ -11,7 +11,7 @@ module.exports = (app) => {
     }
   });
 
-  // Route untuk mendaftarkan user. Jika sukses, loginkan user
+  /** Route untuk mendaftarkan user. Jika sukses, loginkan user */
   app.post('/signup/signup-now', (req, res) => {
     db.User.create({
       user_email: req.body.user_email,
@@ -21,10 +21,8 @@ module.exports = (app) => {
       user_name: req.body.user_name,
       user_avatar: 'default_avatar.jpg',
       user_role: req.body.user_role,
-    }).then(() => {
-      res.redirect(307, '/login/login-now');
-    }).catch((err) => {
-      res.json(err);
-    });
+    })
+      .then(() => res.redirect(307, '/login/login-now'))
+      .catch((err) => res.json(err));
   });
 };

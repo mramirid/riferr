@@ -14,7 +14,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Konfigurasi express agar bisa menangani authentifikasi
-app.use(session({ secret: 'FP PemWeb', resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: 'FP PemWeb', resave: true, saveUninitialized: true }),
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -29,6 +31,4 @@ require('./routes/signup')(app);
 require('./routes/profile')(app);
 require('./routes/products')(app);
 
-db.sequelize.sync().then(() => {
-  app.listen(process.env.PORT || 3000);
-});
+db.sequelize.sync().then(() => app.listen(process.env.PORT || 3000));

@@ -16,23 +16,22 @@ passport.use(
       passwordField: 'user_password',
     },
     (user_email, user_password, done) => {
-      db.User.findOne({ where: { user_email } })
-        .then((dbUser) => {
-          // Jika email tidak terdaftar
-          if (!dbUser) {
-            return done(null, false, {
-              message: 'Email tidak terdaftar',
-            });
-          }
-          // Jika email terdaftar & password salah
-          if (!dbUser.validPassword(user_password)) {
-            return done(null, false, {
-              message: 'Password salah',
-            });
-          }
+      db.User.findOne({ where: { user_email } }).then((dbUser) => {
+        // Jika email tidak terdaftar
+        if (!dbUser) {
+          return done(null, false, {
+            message: 'Email tidak terdaftar',
+          });
+        }
+        // Jika email terdaftar & password salah
+        if (!dbUser.validPassword(user_password)) {
+          return done(null, false, {
+            message: 'Password salah',
+          });
+        }
 
-          return done(null, dbUser);
-        });
+        return done(null, dbUser);
+      });
     },
   ),
 );

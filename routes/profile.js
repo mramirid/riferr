@@ -1,39 +1,38 @@
 const multer = require('multer');
 const db = require('../models');
 
-// Untuk operasi upload file
-const storage = multer.diskStorage({
-  destination(_req, _file, cb) {
-    cb(null, 'public/uploads/avatars/');
-  },
-  filename(_req, file, cb) {
-    cb(null, `${file.fieldname + Date.now()}.jpg`);
-  },
+const upload = multer({
+  storage: multer.diskStorage({
+    destination(_req, _file, cb) {
+      cb(null, 'public/uploads/avatars/');
+    },
+    filename(_req, file, cb) {
+      cb(null, `${file.fieldname + Date.now()}.jpg`);
+    },
+  }),
 });
-
-const storage1 = multer.diskStorage({
-  destination(_req, _file, cb) {
-    cb(null, 'public/uploads/services/');
-  },
-  filename(_req, file, cb) {
-    cb(null, `${file.fieldname + Date.now()}.jpg`);
-  },
+const addPro = multer({
+  storage: multer.diskStorage({
+    destination(_req, _file, cb) {
+      cb(null, 'public/uploads/services/');
+    },
+    filename(_req, file, cb) {
+      cb(null, `${file.fieldname + Date.now()}.jpg`);
+    },
+  }),
 });
-
-const upload = multer({ storage });
-const addPro = multer({ storage: storage1 });
 
 module.exports = (app) => {
   app.get('/profile', (req, res) => {
     if (req.user.user_role !== 2) {
       db.User.findAll({
         where: { user_email: req.user.user_email },
-        include: [{
-          model: db.Service,
-          include: [{
-            model: db.Transaction,
-          }],
-        }],
+        include: [
+          {
+            model: db.Service,
+            include: [{ model: db.Transaction }],
+          },
+        ],
       }).then((dbUser) => {
         const resObj = dbUser.map((user) => ({
           user_id: user.user_id,
@@ -67,34 +66,42 @@ module.exports = (app) => {
             category: cat.category,
           }));
 
-          if (resObj && categories) res.render('profile/profile-page', { data: resObj, categories });
-          //     res.json(resObj)
+          if (resObj && categories) {
+            res.render('profile/profile-page', { data: resObj, categories });
+          }
         });
       });
     } else {
       db.Transaction.findAll({
         where: { user_id: req.user.user_id },
-        include: [{
-          model: db.Service,
-          attributes: ['service_title', 'service_price', 'service_id'],
-          include: [{
-            model: db.User, attributes: ['user_name'],
-          }],
-        }],
+        include: [
+          {
+            model: db.Service,
+            attributes: ['service_title', 'service_price', 'service_id'],
+            include: [
+              {
+                model: db.User,
+                attributes: ['user_name'],
+              },
+            ],
+          },
+        ],
       }).then((dbTransaction) => {
-        res.render('profile/profile-page', { data: [req.user], transact: dbTransaction });
-        // res.json(dbTransaction)
+        res.render('profile/profile-page', {
+          data: [req.user],
+          transact: dbTransaction,
+        });
       });
     }
   });
 
-  // Route untuk me-logout user
+  /** Route untuk me-logout user */
   app.get('/profile/logout', (req, res) => {
     req.logout();
     res.redirect('/');
   });
 
-  // Route untuk redirect ke halaman settings profile
+  /** Route untuk redirect ke halaman settings profile */
   app.get('/profile/settings-page', (req, res) => {
     db.User.findOne({
       where: { user_id: req.user.user_id },
@@ -109,29 +116,32 @@ module.exports = (app) => {
     });
   });
 
-  // Route untuk update data
-  app.post('/profile/settings/update-now', upload.single('avatarFile'), (req, res, next) => {
-    const filename = !req.file ? 'default_avatar.jpg' : req.file.filename;
+  /** Route untuk update data */
+  app.post(
+    '/profile/settings/update-now',
+    upload.single('avatarFile'),
+    (req, res, next) => {
+      const filename = !req.file ? 'default_avatar.jpg' : req.file.filename;
 
-    const newData = {
-      user_name: req.body.name,
-      user_phone: req.body.phone,
-      user_address: req.body.address,
-      user_avatar: filename,
-    };
+      const newData = {
+        user_name: req.body.name,
+        user_phone: req.body.phone,
+        user_address: req.body.address,
+        user_avatar: filename,
+      };
 
-    db.User.update(newData, { where: { user_id: req.user.user_id } })
-      .then(() => {
-        req.login(req.user, (err) => {
-          if (err) {
-            next(new Error('Gagal update'));
-          }
-        });
-        res.redirect('/profile/settings-page');
-      });
-  });
+      db.User.update(newData, { where: { user_id: req.user.user_id } }).then(
+        () => {
+          req.login(req.user, (err) => {
+            if (err) next(new Error('Gagal update'));
+          });
+          res.redirect('/profile/settings-page');
+        },
+      );
+    },
+  );
 
-  // Route untuk tambah service
+  /** Route untuk tambah service */
   app.post('/profile/add-product', addPro.single('photo'), (req, res) => {
     db.Service.create({
       ID_category: req.body.category,
@@ -141,25 +151,27 @@ module.exports = (app) => {
       service_price: req.body.price,
       image_path: req.file.filename,
     })
-      .then(() => {
-        res.redirect('/profile');
-      })
-      .catch((err) => {
-        res.json(err);
-      });
+      .then(() => res.redirect('/profile'))
+      .catch((err) => res.json(err));
   });
 
-  // Route untuk melihat list transaksi dari seller
+  /** Route untuk melihat list transaksi dari seller */
   app.get('/profile/seller/transactions', (req, res) => {
     db.Transaction.findAll({
       include: [
         {
           model: db.Service,
-          attributes: ['service_title', 'service_price', 'user_id', 'service_id'],
+          attributes: [
+            'service_title',
+            'service_price',
+            'user_id',
+            'service_id',
+          ],
           where: { user_id: req.user.user_id },
         },
         {
-          model: db.User, attribute: ['user_name'],
+          model: db.User,
+          attribute: ['user_name'],
         },
       ],
     }).then((dbTransaction) => {

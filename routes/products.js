@@ -3,9 +3,7 @@ const db = require('../models');
 module.exports = (app) => {
   app.get('/products/all', (req, res) => {
     db.User.findAll({
-      include: [{
-        model: db.Service,
-      }],
+      include: [{ model: db.Service }],
     }).then((dbUser) => {
       const resObj = dbUser.map((user) => ({
         user_id: user.user_id,
@@ -26,17 +24,22 @@ module.exports = (app) => {
         })),
       }));
       res.render('products/list-products', {
-        sessions: req.user, page: 'list', menuId: 'home', data: resObj,
+        sessions: req.user,
+        page: 'list',
+        menuId: 'home',
+        data: resObj,
       });
     });
   });
 
   app.get('/products/:categories', (req, res) => {
     db.User.findAll({
-      include: [{
-        model: db.Service,
-        where: { ID_category: req.params.categories },
-      }],
+      include: [
+        {
+          model: db.Service,
+          where: { ID_category: req.params.categories },
+        },
+      ],
     }).then((dbUser) => {
       const resObj = dbUser.map((user) => ({
         user_id: user.user_id,
@@ -57,17 +60,22 @@ module.exports = (app) => {
         })),
       }));
       res.render('products/list-products', {
-        sessions: req.user, page: 'list', menuId: 'home', data: resObj,
+        sessions: req.user,
+        page: 'list',
+        menuId: 'home',
+        data: resObj,
       });
     });
   });
 
   app.get('/products/details/:servicesid', (req, res) => {
     db.User.findAll({
-      include: [{
-        model: db.Service,
-        where: { service_id: req.params.servicesid },
-      }],
+      include: [
+        {
+          model: db.Service,
+          where: { service_id: req.params.servicesid },
+        },
+      ],
     }).then((dbUser) => {
       const resObj = dbUser.map((user) => ({
         user_id: user.user_id,
@@ -88,33 +96,34 @@ module.exports = (app) => {
         })),
       }));
       res.render('products/detail-products', {
-        page: 'list', menuId: 'home', data: resObj, user: req.user.user_id, sessions: req.user,
+        page: 'list',
+        menuId: 'home',
+        data: resObj,
+        user: req.user.user_id,
+        sessions: req.user,
       });
-      // res.json(resObj)
     });
   });
 
   app.post('/products/transaction', (req, res) => {
     const today = new Date();
-    const date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+    const date = `${today.getFullYear()}-${
+      today.getMonth() + 1
+    }-${today.getDate()}`;
     const time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
     db.Transaction.create({
       user_id: req.body.user_id,
       service_id: req.body.service_id,
       transaction_req: req.body.req,
       transaction_datetime: `${date} ${time}`,
-    }).then(() => {
-      res.redirect('/profile');
-    }).catch((err) => {
-      res.json(err);
-    });
+    })
+      .then(() => res.redirect('/profile'))
+      .catch((err) => res.json(err));
   });
 
   app.get('/products/delete/:transaction_id', (req, res) => {
     db.Transaction.destroy({
       where: { transaction_id: req.params.transaction_id },
-    }).then(() => {
-      res.redirect('/profile');
-    });
+    }).then(() => res.redirect('/profile'));
   });
 };
