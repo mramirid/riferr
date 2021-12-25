@@ -25,6 +25,7 @@ $(document).ready(function () {
             user_email: email,
             user_password: password
         }).then(function (data) {
+            console.log(data);
             window.location.replace(data);
      		// window.redirect(data)
         }).catch(function (err) {
