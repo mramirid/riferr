@@ -12,7 +12,7 @@ Aplikasi ini berbasis web dan menjadi sebuah proyek akhir dari mata kuliah Pemro
 <br>
 
 <p align="center">
-	<img src="./public/images/app-ss.png" width="600" height="800">
+	<img src="https://user-images.githubusercontent.com/30113370/147396210-ec13c9fb-95d2-4cee-a0ac-7e8100fbd8e4.jpeg" width="600" height="800">
 </p>
 
 <br>
