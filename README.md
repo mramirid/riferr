@@ -35,16 +35,19 @@ Aplikasi ini berbasis web dan menjadi sebuah proyek akhir dari mata kuliah Pemro
 
 ## Cara Menjalankan
 
-- Install NodeJS
-- Buka folder project ini via CLI dan jalankan perintah `npm install`
-- Jalankan salah satu dari dua perintah berikut:
+1. Install Node.js LTS
+2. Buat database dengan nama "riferr" atau "riferr_dev", lalu import file [./riferr.sql](./riferr.sql) ke dalam database tersebut
+3. Buka folder project ini via CLI dan jalankan perintah `npm install`
+4. Jalankan salah satu dari dua perintah berikut:
 
-  ```bash
-  # Menjalankan server dengan mode production
-  $ npm start
+```bash
+# Menjalankan server dengan mode production
+# database: riferr
+$ npm start
 
-  # Menjalankan server dengan mode development (nodemon)
-  $ npm run dev
-  ```
+# Menjalankan server dengan mode development (nodemon)
+# database: riferr_dev
+$ npm run dev
+```
 
-- Buka http://localhost:3000
+5. Buka http://localhost:3000
